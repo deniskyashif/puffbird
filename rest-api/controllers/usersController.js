@@ -1,24 +1,21 @@
-var mongoose = require('mongoose'),
+var users = require('../data/users'),
     encryption = require('../utilities/encryption');
 
-var User = mongoose.model('User');
+var CONTROLLER_NAME = 'users';
 
 module.exports = {
     getAll: function(req, res) {
-        User.find({}).exec(function(err, collection) {
+        users.getAll(function(err, collection) {
             if (err) {
                 console.log('Users could not be loaded: ' + err);
             }
-
             res.send(collection);
         });
     },
     getById: function(req, res) {
         var id = req.param('id');
 
-        User.findOne({
-            _id: id
-        }, function(err, user) {
+        users.getById(id, function(err, user) {
             if (err) {
                 res.status(404).send('User with this id does not exist');
                 return;
@@ -28,11 +25,10 @@ module.exports = {
     },
     create: function(req, res, next) {
         var newUserData = req.body;
-        console.log(newUserData);
         newUserData.salt = encryption.generateSalt();
         newUserData.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
 
-        User.create(newUserData, function(err, user) {
+        users.create(newUserData, function(err, user) {
             if (err) {
                 console.log('Failed to register new user: ' + err);
                 return;
@@ -58,9 +54,7 @@ module.exports = {
                 updatedUserData.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
             }
 
-            User.update({
-                _id: req.body._id
-            }, updatedUserData, function() {
+            users.update(req.body._id, updatedUserData, function() {
                 res.end();
             });
         } else {
