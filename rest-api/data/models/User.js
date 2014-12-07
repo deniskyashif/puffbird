@@ -7,14 +7,20 @@ var userSchema = mongoose.Schema({
         require: '{PATH} is required',
         unique: true
     },
+    salt: String,
     hashPass: String,
     firstName: String,
     lastName: String,
 });
 
 userSchema.method({
-    authenticate: function(password) {
-        return encryption.generateHashedPassword(this.salt, password) === this.hashPass;
+    authenticate: function (password) {
+        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 });
 

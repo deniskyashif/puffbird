@@ -1,5 +1,5 @@
 var User = require('mongoose').model('User');
-
+	
 module.exports = {
 	getAll: function (callback) {
         User.find({}, callback);
