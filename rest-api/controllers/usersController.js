@@ -1,13 +1,13 @@
 var users = require('../data/users'),
     encryption = require('../utilities/encryption');
 
-var CONTROLLER_NAME = 'users';
-
 module.exports = {
     getAll: function(req, res) {
         users.getAll(function(err, collection) {
             if (err) {
-                console.log('Users could not be loaded: ' + err);
+                return res.status(400).send({
+                    message: 'Couldn\'t get users.'
+                });
             }
             res.send(collection);
         });
@@ -17,8 +17,9 @@ module.exports = {
 
         users.getById(id, function(err, user) {
             if (err) {
-                res.status(404).send('User with this id does not exist');
-                return;
+                return res.status(404).send({
+                    message: 'User with this id does not exist.'
+                });
             }
             res.send(user);
         });
@@ -30,15 +31,16 @@ module.exports = {
 
         users.create(newUserData, function(err, user) {
             if (err) {
-                console.log('Failed to register new user: ' + err);
-                return;
+                return res.status(400).send({
+                    message: 'User with this username already exists.'
+                });
             }
 
             req.logIn(user, function(err) {
                 if (err) {
                     res.status(400);
                     return res.send({
-                        reason: err.toString()
+                        message: err.toString()
                     });
                 }
                 res.send(user);
@@ -46,7 +48,7 @@ module.exports = {
         });
     },
     update: function(req, res, next) {
-        if (req.user._id == req.body._id || req.user.roles.indexOf('admin') > -1) {
+        if (req.user._id === req.body._id) {
             var updatedUserData = req.body;
 
             if (updatedUserData.password && updatedUserData.password.length > 0) {
@@ -58,8 +60,8 @@ module.exports = {
                 res.end();
             });
         } else {
-            res.send({
-                reason: 'You do not have permissions!'
+            res.status(401).send({
+                message: 'You do not have permissions!'
             });
         }
     }

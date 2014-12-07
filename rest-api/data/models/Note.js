@@ -1,10 +1,24 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema;
 
-var noteSchema = mongoose.Schema({
-	title: String,
-	content: String,
+var noteSchema = Schema({
+	title: {
+        type: String,
+        require: '{PATH} is required',
+        unique: true
+    },
+	content: {
+        type: String,
+        require: '{PATH} is required',
+        unique: true
+    },
 	dueDate: Date,
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User',
+		required: true
+	},
 	tags: [String]
 });
 
-module.exports = mongoose.model('Note', noteSchema);
+var Note = mongoose.model('Note', noteSchema);

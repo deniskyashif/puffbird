@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
-    encryption = require('../../utilities/encryption');
+    encryption = require('../../utilities/encryption'),
+    Schema = mongoose.Schema;
 
-var userSchema = mongoose.Schema({
+var userSchema = Schema({
     username: {
         type: String,
         require: '{PATH} is required',
@@ -11,14 +12,17 @@ var userSchema = mongoose.Schema({
     hashPass: String,
     firstName: String,
     lastName: String,
+    notes: [{
+        type: Schema.ObjectId,
+        ref: 'Note'
+    }]
 });
 
 userSchema.method({
-    authenticate: function (password) {
+    authenticate: function(password) {
         if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -41,10 +45,11 @@ module.exports.seedInitialUsers = function() {
             hashedPwd = encryption.generateHashedPassword(salt, '123456q');
             User.create({
                 username: 'pesho',
+                salt: salt,
+                hashPass: hashedPwd,
                 firstName: 'Pesho',
                 lastName: 'Goshov',
-                salt: salt,
-                hashPass: hashedPwd
+                notes: []
             });
             console.log('Users added to database...');
         }

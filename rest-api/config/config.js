@@ -1,7 +1,6 @@
-var PORT = 3030;
-
-var path = require('path');
-var rootPath = path.normalize(__dirname + '/../../');
+var PORT = 3030,
+    path = require('path'),
+    rootPath = path.normalize(__dirname + '/../../');
 
 module.exports = {
     development: {
