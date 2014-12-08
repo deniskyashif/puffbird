@@ -48,7 +48,7 @@ module.exports = {
         });
     },
     update: function(req, res, next) {
-        if (req.user._id === req.body._id) {
+        if (req.user._id == req.body._id) {
             var updatedUserData = req.body;
 
             if (updatedUserData.password && updatedUserData.password.length > 0) {

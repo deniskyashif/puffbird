@@ -29,14 +29,13 @@ module.exports = {
 
         notes.create(newNoteData, function(err, user) {
             if (err) {
-                console.log('Failed to create new note: ' + err);
                 return;
             }
             res.send(user);
         });
 	},
 	update: function(req, res) {
-
+		
 	},
 	delete: function(req, res) {
 
