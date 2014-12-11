@@ -9,8 +9,7 @@ var noteSchema = Schema({
 	},
 	content: {
 		type: String,
-		require: '{PATH} is required',
-		unique: true
+		require: '{PATH} is required'
 	},
 	cretedOn: {
 		type: Date,

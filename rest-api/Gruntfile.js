@@ -17,7 +17,6 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false 
                 }
-
             }
         }
     });

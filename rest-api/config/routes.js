@@ -7,8 +7,8 @@ module.exports = function(app) {
     app.post('/logout', auth.logout);
 
     // users
-    app.get('/api/users/:id', auth.isAuthenticated, controllers.users.getById);
-    app.get('/api/users', auth.isAuthenticated, controllers.users.getAll);
+    app.get('/api/users/:id', controllers.users.getById);
+    app.get('/api/users', controllers.users.getAll);
     app.post('/api/users', controllers.users.create);
     app.put('/api/users', auth.isAuthenticated, controllers.users.update);
 
