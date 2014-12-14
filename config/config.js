@@ -1,6 +1,6 @@
 var DEV_PORT = 3030,
     path = require('path'),
-    rootPath = path.normalize(__dirname + '/../../');
+    rootPath = path.normalize(__dirname + '/../');
 
 module.exports = {
     development: {
@@ -10,7 +10,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: 'cloud-db',
+        db: '',
         port: process.env.PORT || DEV_PORT
     }
 };

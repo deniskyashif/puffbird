@@ -6,7 +6,7 @@ var express = require('express'),
 
 module.exports = function(app, config, router) {
     app.set('view engine', 'jade');
-    app.set('views', config.rootPath + '/rest-api/views');
+    app.set('views', config.rootPath + '/views');
 
     app.use(cookieParser());
 
