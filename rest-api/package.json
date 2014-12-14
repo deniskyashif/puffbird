@@ -25,7 +25,7 @@
   "main": "bin/www",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stinger907/puffbird"
+    "url": "https://github.com/deniskyashif/puffbird"
   },
   "author": "deniskyashif",
   "license": "MIT",

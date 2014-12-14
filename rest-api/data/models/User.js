@@ -8,12 +8,20 @@ var userSchema = Schema({
         require: '{PATH} is required',
         unique: true
     },
-    salt: String,
-    hashPass: String,
+    salt: {
+        type: String,
+        require: '{PATH} is required',
+        unique: true
+    },
+    hashPass: {
+        type: String,
+        require: '{PATH} is required',
+        unique: true
+    },
     firstName: String,
     lastName: String,
     notes: [{
-        type: Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Note'
     }]
 });

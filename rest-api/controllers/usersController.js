@@ -50,7 +50,9 @@ module.exports = {
             });
     },
     update: function(req, res, next) {
-        if (req.user._id.toString() === req.body._id.toString()) {
+        var id = req.param('id');
+
+        if (req.user._id == id) {
             var updatedUserData = req.body;
 
             if (updatedUserData.password && updatedUserData.password.length > 0) {
@@ -60,7 +62,6 @@ module.exports = {
 
             users.update(req.body._id, updatedUserData)
                 .then(function(user) {
-                    console.log(user);
                     res.status(200).end();
                 }, function(err) {
                     return res.status(400).send({

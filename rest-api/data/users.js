@@ -16,7 +16,9 @@ module.exports = {
     },
     getById: function(id) {
         return new Promise(function(resolve, reject) {
-            User.findById(id).exec(function(err, user) {
+            User.findOne({
+                _id: id
+            }).exec(function(err, user) {
                 if (err) {
                     reject(err);
                     return;

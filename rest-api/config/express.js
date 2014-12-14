@@ -4,7 +4,7 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport');
 
-module.exports = function(app, config) {
+module.exports = function(app, config, router) {
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/rest-api/views');
 
@@ -24,4 +24,6 @@ module.exports = function(app, config) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + '/public'));
+
+    app.use(router);
 };

@@ -4,8 +4,7 @@ var mongoose = require('mongoose'),
 var noteSchema = Schema({
 	title: {
 		type: String,
-		require: '{PATH} is required',
-		unique: true
+		require: '{PATH} is required'
 	},
 	content: {
 		type: String,
@@ -15,14 +14,22 @@ var noteSchema = Schema({
 		type: Date,
 		default: Date.now
 	},
+	modyfiedOn:{
+		type: Date,
+		default: Date.now
+	},
 	dueDate: Date,
 	priority: {
 		type: String,
 		enum: ['low', 'medium', 'high'],
 		default: 'low'
 	},
+	accomplished: {
+		type: Boolean,
+		default: false
+	},
 	user: {
-		type: Schema.ObjectId,
+		type: Schema.Types.ObjectId,
 		ref: 'User',
 		required: true
 	},
