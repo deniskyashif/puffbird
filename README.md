@@ -1,4 +1,4 @@
-puffbird
+puffbird-api
 ========
 
 simple note making app

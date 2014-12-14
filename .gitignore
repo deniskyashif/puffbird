@@ -27,4 +27,7 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+# Bower Components
+public/vendor
+
 notes.txt

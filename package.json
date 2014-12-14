@@ -1,19 +1,26 @@
 {
-  "name": "puffbird-rest-api",
+  "name": "puffbird-api",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
+  "description": "simple note making application",
+  "main": "bin/www",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deniskyashif/puffbird-api"
+  },
+  "author": "deniskyashif",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^2.3.11",
     "body-parser": "~1.8.1",
+    "coffee-script": "^1.8.0",
     "cookie-parser": "~1.3.3",
     "debug": "~2.0.0",
     "express": "~4.9.0",
     "express-cors": "0.0.3",
     "express-session": "^1.9.2",
-    "jade": "~1.6.0",
     "mongoose": "^3.8.20",
     "morgan": "~1.3.0",
     "passport": "^0.2.1",
@@ -21,14 +28,6 @@
     "serve-favicon": "~2.1.3",
     "socket.io": "^1.2.1"
   },
-  "description": "RESTful API for Puffbird app",
-  "main": "bin/www",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/deniskyashif/puffbird"
-  },
-  "author": "deniskyashif",
-  "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",

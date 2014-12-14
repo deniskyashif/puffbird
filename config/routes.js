@@ -24,9 +24,8 @@ module.exports = function(router) {
         res.end();
     });
 
-    router.get('/', function(req, res) {
-        res.render('index', {
-            title: 'Puffbird'
-        });
+    //--application--
+    router.get('*', function(req, res) {
+        res.sendFile('../public/index.html');
     });
 };
