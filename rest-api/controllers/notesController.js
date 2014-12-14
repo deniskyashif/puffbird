@@ -17,6 +17,11 @@ module.exports = {
 		var id = req.param('id'),
 			userId = req.user._id;
 
+		if(!id){
+            res.status(400);
+            return;
+        }
+
 		notes.getById(id, userId)
 			.then(function(note) {
 				res.send(note);
@@ -44,6 +49,12 @@ module.exports = {
 		var userId = req.user._id,
 			id = req.param('id'),
 			updatedNoteData = req.body;
+
+		if(!(id && updatedNoteData)){
+            res.status(400);
+            return;
+        }
+
 		updatedNoteData.modyfiedOn = new Date();
 
 		notes.update(id, userId, updatedNoteData)
@@ -58,6 +69,11 @@ module.exports = {
 	remove: function(req, res) {
 		var id = req.param('id'),
 			userId = req.user._id;
+
+		if (!id) {
+			res.status(400);
+			return;
+		}
 
 		notes.remove(id, userId)
 			.then(function() {

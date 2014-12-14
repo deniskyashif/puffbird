@@ -18,6 +18,11 @@ module.exports = {
     getById: function(req, res) {
         var id = req.param('id');
 
+        if(!id){
+            res.status(400);
+            return;
+        }
+
         users.getById(id)
             .then(function(user) {
                 res.send(user);
@@ -51,6 +56,11 @@ module.exports = {
     },
     update: function(req, res, next) {
         var id = req.param('id');
+
+        if(!id){
+            res.status(400);
+            return;
+        }
 
         if (req.user._id == id) {
             var updatedUserData = req.body;
