@@ -26,6 +26,6 @@ module.exports = function(router) {
 
     //--application--
     router.get('*', function(req, res) {
-        res.sendFile('../public/index.html');
+        res.sendFile(__dirname + '/public/index.html');
     });
 };
