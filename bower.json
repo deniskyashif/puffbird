@@ -20,8 +20,8 @@
     "angular": "~1.3.6",
     "angular-route": "~1.3.6",
     "angular-resource": "~1.3.6",
-    "bootstrap-theme-cirrus": "~0.3.0",
     "angular-cookie": "~4.0.6",
-    "toastr": "~2.1.0"
+    "toastr": "~2.1.0",
+    "bootstrap": "~3.3.1"
   }
 }

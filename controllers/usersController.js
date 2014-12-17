@@ -18,7 +18,7 @@ module.exports = {
     getById: function(req, res) {
         var id = req.param('id');
 
-        if(!id){
+        if (!id) {
             res.status(400);
             return;
         }
@@ -57,7 +57,7 @@ module.exports = {
     update: function(req, res, next) {
         var id = req.param('id');
 
-        if(!id){
+        if (!id) {
             res.status(400);
             return;
         }

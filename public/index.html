@@ -2,49 +2,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>{{ctrl.title}}</title>
-		<link rel="stylesheet" href="vendor/bootstrap-theme-cirrus/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="stylesheets/bootstrap-superhero.min.css">
 		<link rel="stylesheet" href="stylesheets/style.css">
 	</head>
 	<body>
-		<header>
-			<div class="navbar">
-				<div class="navbar-header">
-					<a href="#" class="navbar-brand">{{ctrl.title}}</a>
-				</div>
-				<div class="navbar-collapse">
-					<ul class="nav navbar-nav navbar-left">
-						<li>&nbsp;&nbsp;</li>
-						<li class="active">
-							<a href="#">Dashboard</a>
-						</li>
-						<li>
-							<a href="#">Notes</a>
-						</li>
-						<li>
-							<a href="#">Feedback</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</header>
-
+		<header ng-include="'partials/navbar.html'"></header>
+		
 		<section ng-view>
+
 		</section>
 
-		<footer id="footer" class="footer navbar-fixed-bottom">
-			<!-- <hr /> -->
-			<small>
-			<strong>
-			<a href="https://github.com/deniskyashif/puffbird" target="_blank">Open Source Project</a> powered by:
-			</strong>
-			<a href="http://mongoosejs.com/">Mongoose</a>,&nbsp;
-			<a href="http://expressjs.com/">Express</a>,&nbsp;
-			<a href="http://angularjs.org/" target="_blank">AngularJS</a> and
-			<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>
-			<br>
-			<strong>Author:</strong> <a href="https://github.com/deniskyashif" target="_blank">Denis Kyashif</a>
-			</small>
-		</footer>
+		<footer ng-include="'partials/footer.html'"></footer>
 
 		<!-- libs -->
 		<script src="vendor/jquery/dist/jquery.min.js"></script>

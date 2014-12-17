@@ -1,3 +1,5 @@
-app = angular.module('puffbird', ['ngRoute', 'ngResource'])
-		.constant('title', 'Puffbird')
+window.app = angular
+	.module 'puffbird', ['ngRoute', 'ngResource'] 
+	.constant 'title', 'Puffbird' 
+
 		
