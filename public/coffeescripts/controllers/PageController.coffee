@@ -1,8 +1,3 @@
-app.controller 'PageController',  ['title', (title) -> 
-		self = this
-		
-		self.title = title
-
-		self.pesho = ->
-			alert 'gosho'
+puffbird.controller 'PageController',  ['title', (title) -> 
+		@.title = title
 	]

@@ -5,11 +5,11 @@ module.exports = function(router) {
     //auth
     router.post('/login', auth.login);
     router.post('/logout', auth.logout);
-
+    
     // users
     router.get('/api/users/:id', auth.isAuthenticated, controllers.users.getById);
     router.get('/api/users', auth.isAuthenticated, controllers.users.getAll);
-    router.post('/api/users/:id', auth.isAuthenticated, controllers.users.create);
+    router.post('/api/users/', auth.isAuthenticated, controllers.users.create);
     router.put('/api/users/:id', auth.isAuthenticated, controllers.users.update);
 
     //notes
