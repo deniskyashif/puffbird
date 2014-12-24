@@ -1,25 +1,31 @@
 <div class="navbar navbar-default navbar-fixed-top" ng-controller="PageController as ctrl">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../" class="navbar-brand">{{ctrl.title}}</a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#">Notes</a>
-            </li>
-            <li>
-              <a href="#">Create</a>
-            </li>
-            <li>
-              <a href="#">Feedback</a>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            
-          </ul>
-
-        </div>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a href="#/" class="navbar-brand">{{ctrl.title}}</a>
     </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-if="ctrl.auth.isAuthenticated()">
+          <a href="#/notes">Notes</a>
+        </li>
+        <li ng-if="ctrl.auth.isAuthenticated()">
+          <a href="#/notes/create">Create</a>
+        </li>
+        <li>
+          <a href="#/feedback">Feedback</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-if="!ctrl.auth.isAuthenticated()">
+          <a href="#/login">Login</a>
+        </li>
+        <li ng-if="!ctrl.auth.isAuthenticated()">
+          <a href="#/signup">Sign Up</a>
+        </li>
+        <li ng-show="ctrl.auth.isAuthenticated()">
+          <a href="#/login" ng-click="ctrl.auth.logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

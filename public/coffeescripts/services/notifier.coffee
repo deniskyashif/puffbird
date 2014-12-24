@@ -1,9 +1,9 @@
 puffbird.factory 'notifier', ['toastr', (toastr) -> 
-	toastr.options =
-		positionClass: 'toast-top-full-width' 
-	
+	toastr.options = 
+        closeButton: true
+		
 	success: (msg) ->
-		toast.success msg
+		toastr.success msg
 	error: (msg) ->
-		toast.error msg
+		toastr.error msg
 ]

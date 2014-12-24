@@ -9,7 +9,7 @@ module.exports = function(router) {
     // users
     router.get('/api/users/:id', auth.isAuthenticated, controllers.users.getById);
     router.get('/api/users', auth.isAuthenticated, controllers.users.getAll);
-    router.post('/api/users/', auth.isAuthenticated, controllers.users.create);
+    router.post('/api/users/', controllers.users.create);
     router.put('/api/users/:id', auth.isAuthenticated, controllers.users.update);
 
     //notes

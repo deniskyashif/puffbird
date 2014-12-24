@@ -1,29 +1,28 @@
-puffbird.factory 'authorization', ['$http', '$q', 'identity', 'UserResource', 
+puffbird.factory 'auth', ['$http', '$q', 'identity', 'UserResource', 
 	($http, $q, identity, UserResource) ->
 		signup: (user) -> 
 			$q (resolve, reject) -> 
-				new UserResource user
-					.$save()
+				newUser = new UserResource user
+				newUser.$save()
 					.then ->
 						identity.currentUser = user
-						resolve user, 
-						(response) -> 
-							reject response
+						resolve user
+					,(err) ->
+						reject err
 		login: (user) ->
 			$q (resolve, reject) -> 
 				$http.post '/login', user 
-					.$promise
-					.then (response) -> 
+					.success (response) -> 
 						if response.success
-					        user = new UserResource()
-							angular.extend user, response.user 
-							identity.currentUser = user 
-							resolve true
-						resolve false
+					        user = new UserResource() 
+					        angular.extend user, response.user  
+					        identity.currentUser = user  
+					        resolve true
+						else 
+							resolve false
 		logout: ->
 			$q (resolve, reject) -> 
 				$http.post '/logout' 
-					.$promise
 					.then -> 
 						delete identity.currentUser
 						resolve()
