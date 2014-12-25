@@ -1,8 +1,8 @@
-puffbird.factory 'identity', ['$window', 'UserResource' ,($window, UserResource) -> 
+puffbird.factory 'identityService', ['$window', 'userResource', ($window, userResource) -> 
 	user = null
 
 	if $window.bootstrappedUserObject
-		user = new UserResource()
+		user = new userResource()
 		angular.extend user, $window.bootstrappedUserObject
 
 	currentUser: user

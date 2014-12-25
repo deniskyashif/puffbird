@@ -1,3 +1,3 @@
-puffbird.controller 'NoteController', ['NoteResource', (NoteResource) ->
+puffbird.controller 'NoteController', ['noteResource', (noteResource) ->
     
 ]

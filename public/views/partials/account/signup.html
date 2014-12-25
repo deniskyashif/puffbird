@@ -37,9 +37,9 @@
                 <br>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default">Cancel</button>
-                        <button ng-click="ctrl.signup(user)" type="submit" class="btn btn-primary" 
-                         ng-disabled="signupForm.$invalid || user.password !== user.confirmPassword">Sign Up</button>
+                        <a href="#/home" class="btn btn-default">Cancel</a>
+                        <a ng-click="ctrl.signup(user)" type="submit" class="btn btn-primary" 
+                         ng-disabled="signupForm.$invalid || user.password !== user.confirmPassword">Sign Up</a>
                     </div>
                 </div>
             </fieldset>

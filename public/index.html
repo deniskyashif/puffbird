@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Puffbird</title>
+		<title>Puffbird Notemaker</title>
 		<link rel="stylesheet" href="vendor/toastr/toastr.min.css">
 		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="stylesheets/bootstrap-superhero.min.css">
@@ -27,17 +27,25 @@
 		<script src="javascripts/puffbird.js"></script>
 
 		<!-- services -->
-		<script src="javascripts/services/UserResource.js"></script>
-		<script src="javascripts/services/NoteResource.js"></script>
-		<script src="javascripts/services/account/identity.js"></script>
-		<script src="javascripts/services/account/auth.js"></script>
-		<script src="javascripts/services/notifier.js"></script>
+		<script src="javascripts/services/resources/userResource.js"></script>
+		<script src="javascripts/services/resources/noteResource.js"></script>
+		<script src="javascripts/services/account/identityService.js"></script>
+		<script src="javascripts/services/account/authService.js"></script>
+		<script src="javascripts/services/notificationService.js"></script>
 
 		<!-- controllers -->
 		<script src="javascripts/controllers/PageController.js"></script>
 		<script src="javascripts/controllers/UserController.js"></script>
 		<script src="javascripts/controllers/NoteController.js"></script>
+		<script src="javascripts/controllers/FeedbackController.js"></script>
+		<script src="javascripts/controllers/HomeController.js"></script>
 
 		<!-- directives -->
+
+		<script>
+			if (currentUser) {
+				window.bootstrappedUserObject = JSON.stringify(currentUser);
+			}
+		</script>
 	</body>
 </html>

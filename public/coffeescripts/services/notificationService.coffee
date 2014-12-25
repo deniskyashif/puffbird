@@ -1,4 +1,4 @@
-puffbird.factory 'notifier', ['toastr', (toastr) -> 
+puffbird.factory 'notificationService', ['toastr', (toastr) -> 
 	toastr.options = 
         closeButton: true
 		

@@ -1,24 +1,23 @@
-puffbird.controller 'UserController', ['$location', 'notifier', 'identity', 'auth', 
-	($location, notifier, identity, auth) -> 
-		@.identity = identity
-
+puffbird.controller 'UserController', ['$location', 'notificationService', 'authService', 
+	($location, notificationService, authService) -> 
+		
 		@.signup = (user) ->
-			auth.signup user 
+			authService.signup user 
 				.then ->
-					notifier.success 'Registration successful.'
+					notificationService.success 'Registration successful.'
 					$location.path '/'
 
 		@.login = (user) ->
-			auth.login user 
+			authService.login user 
 				.then (success) ->
 					if success 
-						notifier.success 'Login successful.' 
+						notificationService.success 'Login successful.' 
 						$location.path '/'
 					else 
-						notifier.error 'Login error.'
+						notificationService.error 'Login error.'
 
 		@.logout = ->
-			auth.logout()
+			authService.logout()
 				.then ->
-					notifier.success 'Logout successful.'
+					notificationService.success 'Logout successful.'
 	]
