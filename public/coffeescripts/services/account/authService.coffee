@@ -5,7 +5,6 @@ puffbird.factory 'authService', ['$http', '$q', 'identityService', 'userResource
 				newUser = new userResource user
 				newUser.$save()
 					.then ->
-						identityService.currentUser = user
 						resolve user
 					,(err) ->
 						reject err
@@ -14,17 +13,15 @@ puffbird.factory 'authService', ['$http', '$q', 'identityService', 'userResource
 				$http.post '/login', user 
 					.success (response) -> 
 						if response.success
-					        user = new userResource() 
-					        angular.extend user, response.user  
-					        identityService.currentUser = user  
-					        resolve true
+			        identityService.setCurrentUser response.user  
+			        resolve true
 						else 
 							resolve false
 		logout: ->
 			$q (resolve, reject) -> 
 				$http.post '/logout' 
 					.then -> 
-						delete identityService.currentUser
+						identityService.setCurrentUser null
 						resolve()
 		isAuthenticated: ->
 			identityService.isAuthenticated()

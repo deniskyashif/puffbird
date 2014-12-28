@@ -1,11 +1,16 @@
-puffbird.factory 'identityService', ['$window', 'userResource', ($window, userResource) -> 
-	user = null
+puffbird.factory 'identityService', ['$cookieStore', ($cookieStore) -> 
+  cookieStorageUserKey = 'puffbirdApplicationUser'
+  currentUser = null
 
-	if $window.bootstrappedUserObject
-		user = new userResource()
-		angular.extend user, $window.bootstrappedUserObject
-
-	currentUser: user
-	isAuthenticated: -> 
-		!!@.currentUser
-] 
+  getCurrentUser: ->
+    savedUser = $cookieStore.get cookieStorageUserKey
+    if savedUser then savedUser else currentUser
+  setCurrentUser: (user) ->
+    if user 
+      $cookieStore.put cookieStorageUserKey, user
+    else 
+      $cookieStore.remove cookieStorageUserKey
+    currentUser = user 
+  isAuthenticated: ->
+    !!@.getCurrentUser()
+]

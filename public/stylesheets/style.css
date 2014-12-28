@@ -2,7 +2,11 @@ body{
 	padding: 75px;	
 }
 
-footer {
+.jumbotron{
+    padding: 25px;
+}
+
+.footer {
 	text-align: center;
 	padding: 20px; 
 }

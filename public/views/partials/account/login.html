@@ -1,4 +1,4 @@
-<div class="row" ng-controller="UserController as ctrl">
+<div class="row" ng-controller="UserController as userCtrl">
     <div class="col-lg-3"></div>
     <div class="col-lg-6 well bs-component">
         <form class="form-horizontal" name="loginForm">
@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <a href="#/home" class="btn btn-default">Cancel</a>
-                        <a ng-click="ctrl.login(user)" type="submit" class="btn btn-primary">Login</a>
+                        <a ng-click="userCtrl.login(user)" type="submit" class="btn btn-primary">Login</a>
                     </div>
                 </div>
             </fieldset>

@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top" ng-controller="PageController as ctrl">
+<div class="navbar navbar-default navbar-fixed-top" ng-controller="PageController as pageCtrl">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -6,31 +6,43 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-      <a href="#/" class="navbar-brand">{{ctrl.title}}</a>
+      <a href="#/" class="navbar-brand">{{pageCtrl.title}}</a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li>
+        <li ng-if="pageCtrl.identityService.isAuthenticated()" >
           <a href="#/notes">Notes</a>
         </li>
-        <li>
+        <li ng-if="pageCtrl.identityService.isAuthenticated()" >
           <a href="#/notes/create">Create</a>
         </li>
         <li>
           <a href="#/feedback">Feedback</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <!-- <ul ng-if="!pageCtrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
         <li>
           <a href="#/login">Login</a>
         </li>
         <li>
           <a href="#/signup">Sign Up</a>
         </li>
-        <li ng-if="ctrl.auth.isAuthenticated()">
-          <a href="#/home" ng-click="ctrl.auth.logout()">Logout</a>
-        </li>
       </ul>
+      <ul ng-if="pageCtrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          {{pageCtrl.identityService.getCurrentUser().username}} &nbsp;&nbsp;<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a>Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="#/home" ng-click="pageCtrl.authService.logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul> -->
+
+      <ng-include src="'views/partials/account/account.html'"></ng-include>
+
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
-puffbird.controller 'PageController',  ['authService', 'title', (authService, title) -> 
-        @.title = title
-        @.auth = authService
-    ]
+puffbird.controller 'PageController',  ['identityService', 'authService', 'title', (identityService, authService, title) -> 
+  @.title = title
+  @.authService = authService
+  @.identityService = identityService
+]

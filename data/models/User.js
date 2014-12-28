@@ -20,6 +20,11 @@ var userSchema = Schema({
     },
     firstName: String,
     lastName: String,
+    email: {
+        type: String,
+        require: '{PATH} is required',
+        unique: true
+    }, 
     notes: [{
         type: Schema.Types.ObjectId,
         ref: 'Note'

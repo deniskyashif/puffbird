@@ -1,10 +1,11 @@
 app = angular
 	.module 'puffbird', ['ngRoute', 'ngResource', 'ngCookies'] 
-	.constant 'baseUrl', 'http://localhost:3030/'
 	.constant 'title', 'Puffbird' 
 	.constant 'toastr', toastr
 
-app.config ($routeProvider, $locationProvider) ->
+app.config ($routeProvider, $httpProvider) ->
+	$httpProvider.interceptors.push 'httpErrorHandlerInterceptor'
+
 	routeUserChecks = 
 		authenticated: 
 			authenticate: (authService) ->
@@ -14,11 +15,11 @@ app.config ($routeProvider, $locationProvider) ->
 		.when '/login',
 			templateUrl: '/views/partials/account/login.html'
 			controller: 'UserController'
-			controllerAs: 'usrCtrl'
+			controllerAs: 'userCtrl'
 		.when '/signup',
 			templateUrl: '/views/partials/account/signup.html'
 			controller: 'UserController'
-			controllerAs: 'usrCtrl'
+			controllerAs: 'userCtrl'
 		.when '/feedback',
 			templateUrl: '/views/partials/feedback.html'
 			controller: 'FeedbackController',
@@ -42,6 +43,6 @@ app.config ($routeProvider, $locationProvider) ->
 
 app.run ($rootScope, $location) ->
 	$rootScope.$on '$routeChangeError', (ev, current, previous, rejection) -> 
-		if rejection is 'not authorized' then $location.path '/login'
+		$location.path '/login' if rejection is 'not authorized'
 
 (exports ? @).puffbird = app
