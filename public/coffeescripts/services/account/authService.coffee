@@ -1,8 +1,8 @@
-puffbird.factory 'authService', ['$http', '$q', 'identityService', 'userResource', 
-	($http, $q, identityService, userResource) ->
+puffbird.factory 'authService', ['$http', '$q', 'identityService', 'UserResource', 
+	($http, $q, identityService, UserResource) ->
 		signup: (user) -> 
 			$q (resolve, reject) -> 
-				newUser = new userResource user
+				newUser = new UserResource user
 				newUser.$save()
 					.then ->
 						resolve user

@@ -49,6 +49,7 @@ module.exports = {
           res.send(user);
         });
       }, function(err) {
+        console.log(err);
         res.status(400).send({
           message: 'User with this username already exists.'
         });

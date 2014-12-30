@@ -1,4 +1,4 @@
-puffbird.factory 'userResource', ['$resource', ($resource) -> 
+puffbird.factory 'UserResource', ['$resource', ($resource) -> 
 	$resource '/api/users/:id', 
         _id: '@id' 
         update: 

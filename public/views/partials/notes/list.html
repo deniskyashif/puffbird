@@ -1,1 +1,33 @@
-<h1>Notes</h1>
+<div ng-controller="NoteController as noteCtrl" ng-init="noteCtrl.fetchAllNotes()" class="row">
+  <div class="col-md-12">
+    <h1>Notes</h1>    
+  </div>
+  <div class="col-md-12">
+    
+  </div>
+  <div class="col-md-2">
+    <ul class="list-group filter-list">
+      <li class="list-group-item"><a href="#">All <span class="badge">33</span></a></li>
+      <li class="list-group-item active"><a href="#">Today <span class="badge">2</span></a></li>
+      <li class="list-group-item"><a href="#">Tomorrow <span class="badge">0</span></a></li>
+      <li class="list-group-item"><a href="#">7 Days <span class="badge">3</span></a></li>
+      <li class="list-group-item"><a href="#">This Month <span class="badge">3</span></a></li>
+      <li class="list-group-item"><a href="#">This Year <span class="badge">3</span></a></li>
+    </ul>  
+  </div>
+  <div class="col-md-8">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="note in noteCtrl.notes">
+        <div class="row">
+          <div note="note" class="col-md-10"></div>
+          <div class="col-md-2">
+            <a href="" class="btn btn-xs btn-info">Edit</a>
+            <a href="" class="btn btn-xs btn-danger">Delete</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-2">
+    
+  </div>

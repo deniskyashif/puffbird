@@ -17,10 +17,10 @@ module.exports = {
 		var id = req.param('id'),
 			userId = req.user._id;
 
-		if(!id){
-            res.status(400);
-            return;
-        }
+		if (!id) {
+			res.status(400);
+			return;
+		}
 
 		notes.getById(id, userId)
 			.then(function(note) {
@@ -50,10 +50,10 @@ module.exports = {
 			id = req.param('id'),
 			updatedNoteData = req.body;
 
-		if(!(id && updatedNoteData)){
-            res.status(400);
-            return;
-        }
+		if (!(id && updatedNoteData)) {
+			res.status(400);
+			return;
+		}
 
 		updatedNoteData.modyfiedOn = new Date();
 
