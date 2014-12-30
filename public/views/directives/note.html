@@ -1,6 +1,5 @@
-<div class="row">
-  <div class="col-md-12">
-    <span ng-class="{'label label-info': note.priority === 'low',
+
+  <span ng-class="{'label label-info': note.priority === 'low',
   'label label-warning': note.priority === 'medium',
   'label label-danger': note.priority === 'high'}">
   {{note.priority}}
@@ -8,6 +7,6 @@
   <span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
   {{note.accomplished ? 'done' : 'pending'}}
   </span>&nbsp;
-  {{note.title}}
-  </div>
-</div>
+  <small>Due:<time>{{note.dueDate | date:"EEEE MMM d, y HH:mm"}}</time></small>
+  <small>Created:<time>{{note.createdOn | date:"EEEE MMM d, y HH:mm"}}</time></small>
+  <br><strong>{{note.title}}</strong>

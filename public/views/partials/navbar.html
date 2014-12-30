@@ -20,29 +20,7 @@
           <a href="#/feedback">Feedback</a>
         </li>
       </ul>
-      <!-- <ul ng-if="!pageCtrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#/login">Login</a>
-        </li>
-        <li>
-          <a href="#/signup">Sign Up</a>
-        </li>
-      </ul>
-      <ul ng-if="pageCtrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          {{pageCtrl.identityService.getCurrentUser().username}} &nbsp;&nbsp;<b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a>Profile</a></li>
-            <li class="divider"></li>
-            <li><a href="#/home" ng-click="pageCtrl.authService.logout()">Logout</a></li>
-          </ul>
-        </li>
-      </ul> -->
-
       <ng-include src="'views/partials/account/account.html'"></ng-include>
-
     </div>
   </div>
 </div>

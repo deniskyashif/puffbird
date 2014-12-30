@@ -11,6 +11,11 @@ body{
 	padding: 20px; 
 }
 
-.filter-list a{
-    color: #fff;
+.puffbird-note{
+    margin-bottom: 1px;
+}
+
+.puffbird-note:hover{
+    /*border: 1px solid #fff;*/
+    background-color: #2B3E50;
 }

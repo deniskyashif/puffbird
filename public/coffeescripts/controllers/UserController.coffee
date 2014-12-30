@@ -17,7 +17,7 @@ puffbird.controller 'UserController', ['$location', 'notificationService', 'auth
 				.then (success) ->
 					if success 
 						notificationService.success 'Login successful.' 
-						$location.path '/'
+						$location.path '/notes'
 					else 
 						notificationService.error 'Could not login.'
 
@@ -25,4 +25,5 @@ puffbird.controller 'UserController', ['$location', 'notificationService', 'auth
 			authService.logout()
 				.then ->
 					notificationService.success 'Logout successful.'
+					$location.path '/home'
 	]

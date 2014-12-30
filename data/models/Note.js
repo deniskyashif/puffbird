@@ -6,11 +6,11 @@ var noteSchema = Schema({
 		type: String,
 		require: '{PATH} is required'
 	},
-	content: {
+	details: {
 		type: String,
 		require: '{PATH} is required'
 	},
-	cretedOn: {
+	createdOn: {
 		type: Date,
 		default: Date.now
 	},

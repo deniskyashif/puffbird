@@ -1,4 +1,4 @@
-<div ng-controller="NoteController as noteCtrl" ng-init="noteCtrl.fetchAllNotes()">
+<div ng-controller="NoteController as noteCtrl">
   <div class="row">
     <div class="col-md-12">
       <h1>Notes</h1>
@@ -37,36 +37,34 @@
           <option value="true">Accomplished</option>
           <option value="false" selected="selected">Pending</option>
         </select>
-      </div> 
+      </div>
       <div class="form-group">
         <label for="orderBy" class="control-label">Order By:</label>
         <select ng-init="orderBy = orderBy || 'createdOn'" ng-model="orderBy" name="orderBy" class="form-control">
+          <option value="createdOn">Created On</option>
           <option value="dueDate">Due Date</option>
-          <option value="createdOn" selected="selected">Created On</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="orderType" class="control-label">Order Type:</label>
-        <select ng-init="orderType = orderType || 'false'" ng-model="orderType" name="orderType" class="form-control">
-          <option value="false" selected="selected">Ascending</option>
-          <option value="true">Descending</option>
-        </select>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="orderType"> Descending
+        </label>
       </div>
     </div>
     <div class="col-md-10">
-    <ul class="list-group">
-      <li class="list-group-item"
-        ng-repeat="note in noteCtrl.notes | filter: {priority: priority, accomplished: status} | orderBy: orderBy:orderType">
-        <div class="row">
-          <div note="note" class="col-md-10"></div>
-          <div class="col-md-2">
-            <a href="" class="btn btn-xs btn-danger">Delete</a>
-            <a href="" class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}</a>
+      <ul class="list-group">
+        <li class="list-group-item puffbird-note"
+          ng-repeat="note in noteCtrl.notes | filter: {priority: priority, accomplished: status} | orderBy: orderBy:orderType">
+          <div class="row">
+            <div note="note" class="col-md-10"></div>
+            <div class="col-md-2">
+              <a href="" class="btn btn-xs btn-danger">Delete</a>
+              <a href="" class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}</a>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 </div>
