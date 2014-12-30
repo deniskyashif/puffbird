@@ -1,10 +1,13 @@
-<span ng-class="{'label label-info': note.priority === 'low',
+<div class="row">
+  <div class="col-md-12">
+    <span ng-class="{'label label-info': note.priority === 'low',
   'label label-warning': note.priority === 'medium',
   'label label-danger': note.priority === 'high'}">
   {{note.priority}}
-</span>&nbsp;
-<span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
+  </span>&nbsp;
+  <span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
   {{note.accomplished ? 'done' : 'pending'}}
-</span>
-<span class="badge">{{note.dueDate}}</span>
+  </span>&nbsp;
   {{note.title}}
+  </div>
+</div>

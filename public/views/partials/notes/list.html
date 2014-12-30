@@ -1,33 +1,72 @@
-<div ng-controller="NoteController as noteCtrl" ng-init="noteCtrl.fetchAllNotes()" class="row">
-  <div class="col-md-12">
-    <h1>Notes</h1>    
+<div ng-controller="NoteController as noteCtrl" ng-init="noteCtrl.fetchAllNotes()">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Notes</h1>
+    </div>
   </div>
-  <div class="col-md-12">
-    
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <ul class="nav nav-pills">
+        <li><a href="">All <span class="badge">42</span></a></li>
+        <li><a href="">Today <span class="badge">2</span></a></li>
+        <li><a href="">Tomorrow <span class="badge">2</span></a></li>
+        <li><a href="">7 Days <span class="badge">3</span></a></li>
+        <li><a href="">This Month <span class="badge">5</span></a></li>
+        <li><a href="">This Year <span class="badge">12</span></a></li>
+        <li><a href="">Timeless <span class="badge">17</span></a></li>
+        <li><a href="">Past <span class="badge">11</span></a></li>
+      </ul>
+    </div>
   </div>
-  <div class="col-md-2">
-    <ul class="list-group filter-list">
-      <li class="list-group-item"><a href="#">All <span class="badge">33</span></a></li>
-      <li class="list-group-item active"><a href="#">Today <span class="badge">2</span></a></li>
-      <li class="list-group-item"><a href="#">Tomorrow <span class="badge">0</span></a></li>
-      <li class="list-group-item"><a href="#">7 Days <span class="badge">3</span></a></li>
-      <li class="list-group-item"><a href="#">This Month <span class="badge">3</span></a></li>
-      <li class="list-group-item"><a href="#">This Year <span class="badge">3</span></a></li>
-    </ul>  
-  </div>
-  <div class="col-md-8">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="priority" class="control-label">Priority:</label>
+        <select ng-init="priority = priority || ''" ng-model="priority" name="priority" class="form-control">
+          <option value="" selected="selected">All</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="status" class="control-label">Status:</label>
+        <select ng-init="status = status || ''" ng-model="status" name="status" class="form-control">
+          <option value="" >All</option>
+          <option value="true">Accomplished</option>
+          <option value="false" selected="selected">Pending</option>
+        </select>
+      </div> 
+      <div class="form-group">
+        <label for="orderBy" class="control-label">Order By:</label>
+        <select ng-init="orderBy = orderBy || 'createdOn'" ng-model="orderBy" name="orderBy" class="form-control">
+          <option value="dueDate">Due Date</option>
+          <option value="createdOn" selected="selected">Created On</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="orderType" class="control-label">Order Type:</label>
+        <select ng-init="orderType = orderType || 'false'" ng-model="orderType" name="orderType" class="form-control">
+          <option value="false" selected="selected">Ascending</option>
+          <option value="true">Descending</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-10">
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat="note in noteCtrl.notes">
+      <li class="list-group-item"
+        ng-repeat="note in noteCtrl.notes | filter: {priority: priority, accomplished: status} | orderBy: orderBy:orderType">
         <div class="row">
           <div note="note" class="col-md-10"></div>
           <div class="col-md-2">
-            <a href="" class="btn btn-xs btn-info">Edit</a>
             <a href="" class="btn btn-xs btn-danger">Delete</a>
+            <a href="" class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}</a>
           </div>
         </div>
       </li>
     </ul>
   </div>
-  <div class="col-md-2">
-    
   </div>
+</div>
+</div>

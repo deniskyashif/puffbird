@@ -43,6 +43,7 @@ app.config ($routeProvider, $httpProvider) ->
 
 app.run ($rootScope, $location) ->
 	$rootScope.$on '$routeChangeError', (ev, current, previous, rejection) -> 
+		alert rejection
 		$location.path '/login' if rejection is 'not authorized'
 
 (exports ? @).puffbird = app
