@@ -1,5 +1,5 @@
-var usersController = require('../controllers/usersController'),
-	notesController = require('../controllers/notesController');
+var usersController = require('../controllers/UserController'),
+	notesController = require('../controllers/NoteController');
 
 module.exports = {
     users: usersController,

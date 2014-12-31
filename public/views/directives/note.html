@@ -1,12 +1,15 @@
-
-  <span ng-class="{'label label-info': note.priority === 'low',
-  'label label-warning': note.priority === 'medium',
-  'label label-danger': note.priority === 'high'}">
-  {{note.priority}}
-  </span>&nbsp;
-  <span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
-  {{note.accomplished ? 'done' : 'pending'}}
-  </span>&nbsp;
-  <small>Due:<time>{{note.dueDate | date:"EEEE MMM d, y HH:mm"}}</time></small>
-  <small>Created:<time>{{note.createdOn | date:"EEEE MMM d, y HH:mm"}}</time></small>
-  <br><strong>{{note.title}}</strong>
+<span ng-class="{'label label-info': note.priority === 'low',
+'label label-warning': note.priority === 'medium',
+'label label-danger': note.priority === 'high'}">
+{{note.priority}}
+</span>&nbsp;
+<span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
+{{note.accomplished ? 'done' : 'pending'}}
+</span>&nbsp;
+<span class="label label-primary">
+<small>Due:</small>
+<time>{{note.dueDate | date:"EEEE MMM d, y HH:mm"}}</time>
+</span>
+<!-- <small>Created:<time>{{note.createdOn | date:"EEEE MMM d, y HH:mm"}}</time></small> -->
+<br>
+<h4><strong>{{note.title}}</strong></h4>

@@ -4,4 +4,6 @@ puffbird.factory 'NoteResource', ['$resource', ($resource) ->
       method: 'PUT' 
     delete:
       method: 'DELETE'
+      params: 
+        _id: '@id'
 ]

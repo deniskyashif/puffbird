@@ -1,4 +1,4 @@
-<div ng-controller="NoteController as noteCtrl">
+<div ng-controller="NoteController as noteCtrl" ng-init="noteCtrl.loadNotes()">
   <div class="row">
     <div class="col-md-12">
       <h1>Notes</h1>
@@ -58,8 +58,8 @@
           <div class="row">
             <div note="note" class="col-md-10"></div>
             <div class="col-md-2">
-              <a href="" class="btn btn-xs btn-danger">Delete</a>
-              <a href="" class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}</a>
+              <button ng-click="noteCtrl.delete(note)" class="btn btn-sm btn-danger">Delete</button>
+              <button class="btn btn-sm btn-default">{{note.accomplished ? 'Pend':'Complete'}}</button>
             </div>
           </div>
         </li>
