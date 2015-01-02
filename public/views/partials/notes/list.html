@@ -59,7 +59,8 @@
             <div note="note" class="col-md-10"></div>
             <div class="col-md-2">
               <button ng-click="noteCtrl.delete(note)" class="btn btn-sm btn-danger">Delete</button>
-              <button class="btn btn-sm btn-default">{{note.accomplished ? 'Pend':'Complete'}}</button>
+              <button ng-click="noteCtrl.toggleAccomplished(note)" 
+                      class="btn btn-sm btn-default">{{note.accomplished ? 'Pend':'Complete'}}</button>
             </div>
           </div>
         </li>

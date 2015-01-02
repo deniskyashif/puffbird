@@ -7,6 +7,10 @@ Date.prototype.endOfWeek = ->
     @.getDate() + 7 - @.getDay() 
   );
 
+Date.prototype.endOfMonth = ->
+  lastDay = new Date(@.getFullYear(), @.getMonth() + 1, 0);
+
+
 Date.prototype.endOfYear = ->
   new Date @.getFullYear(), 11, 31
 
