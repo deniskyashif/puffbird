@@ -8,8 +8,7 @@
 </span>&nbsp;
 <span class="label label-primary">
 <small>Due:</small>
-<time>{{note.dueDate | date:"EEEE MMM d, y HH:mm"}}</time>
+<time>{{note.dueDate ? (note.dueDate | date:"EEEE MMM d, y HH:mm") : 'Timeless'}}</time>
 </span>
-<!-- <small>Created:<time>{{note.createdOn | date:"EEEE MMM d, y HH:mm"}}</time></small> -->
 <br>
 <h4><strong>{{note.title}}</strong></h4>

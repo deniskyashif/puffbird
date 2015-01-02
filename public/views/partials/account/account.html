@@ -10,7 +10,9 @@
     <ul ng-show="userCtrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="" data-toggle="dropdown" class="dropdown-toggle">
-                {{ userCtrl.identityService.getCurrentUser().username }}&nbsp;&nbsp;<span class="caret"></span>
+                {{userCtrl.identityService.getCurrentUser().firstName}}
+                {{userCtrl.identityService.getCurrentUser().lastName}}
+                &nbsp;&nbsp;<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li><a href="#">Profile</a></li>
