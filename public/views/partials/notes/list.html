@@ -5,21 +5,51 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-10">
-      <ul class="nav nav-pills">
-        <li><a href="">All <span class="badge">{{noteCtrl.stats.all}}</span></a></li>
-        <li><a href="">Today <span class="badge">{{noteCtrl.stats.today}}</span></a></li>
-        <li><a href="">Tomorrow <span class="badge">{{noteCtrl.stats.tomorrow}}</span></a></li>
-        <li><a href="">This Week <span class="badge">{{noteCtrl.stats.thisWeek}}</span></a></li>
-        <li><a href="">This Month <span class="badge">{{noteCtrl.stats.thisMonth}}</span></a></li>
-        <li><a href="">This Year <span class="badge">{{noteCtrl.stats.thisYear}}</span></a></li>
-        <li><a href="">Timeless <span class="badge">{{noteCtrl.stats.timeless}}</span></a></li>
-        <li><a href="">Past <span class="badge">{{noteCtrl.stats.past}}</span></a></li>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="fromDate" class="control-label">Due From:</label>
+        <div class="input-group">
+          <input type="text" name="fromDate" class="form-control" datepicker-popup="{{noteCtrl.format}}"
+          ng-model="fromDate" is-open="noteCtrl.fromCalendarOpened" min-date="noteCtrl.minDate" 
+          max-date="toDate || noteCtrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="noteCtrl.openCalendar($event, 'from')">
+          <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="toDate" class="control-label">Due To:</label>
+        <div class="input-group">
+          <input type="text" name="toDate" class="form-control" datepicker-popup="{{noteCtrl.format}}"
+          ng-model="toDate" is-open="noteCtrl.toCalendarOpened" min-date="fromDate || noteCtrl.minDate" 
+          max-date="noteCtrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="noteCtrl.openCalendar($event, 'to')">
+          <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li class="list-group-item puffbird-note"
+          ng-repeat="note in noteCtrl.notes
+          | filter: {priority: priority, accomplished: status}
+          | orderBy: orderBy:orderType">
+          <div class="row">
+            <div note="note" class="col-md-9"></div>
+            <div class="col-md-3">
+              <button ng-click="noteCtrl.delete(note)" class="btn btn-xs btn-danger">Delete</button>
+              <button ng-click="noteCtrl.toggleAccomplished(note)"
+              class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}</button>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
-  </div>
-  <div class="row">
     <div class="col-md-2">
       <div class="form-group">
         <label for="priority" class="control-label">Priority:</label>
@@ -50,21 +80,6 @@
           <input type="checkbox" ng-model="orderType"> Descending
         </label>
       </div>
-    </div>
-    <div class="col-md-10">
-      <ul class="list-group">
-        <li class="list-group-item puffbird-note"
-          ng-repeat="note in noteCtrl.notes | filter: {priority: priority, accomplished: status} | orderBy: orderBy:orderType">
-          <div class="row">
-            <div note="note" class="col-md-10"></div>
-            <div class="col-md-2">
-              <button ng-click="noteCtrl.delete(note)" class="btn btn-sm btn-danger">Delete</button>
-              <button ng-click="noteCtrl.toggleAccomplished(note)" 
-                      class="btn btn-sm btn-default">{{note.accomplished ? 'Pend':'Complete'}}</button>
-            </div>
-          </div>
-        </li>
-      </ul>
     </div>
   </div>
 </div>

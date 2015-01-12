@@ -1,3 +1,0 @@
-puffbird.filter 'dateRangeFilter', [ ->
-  
-]

@@ -1,14 +1,24 @@
-<span ng-class="{'label label-info': note.priority === 'low',
-'label label-warning': note.priority === 'medium',
-'label label-danger': note.priority === 'high'}">
-{{note.priority}}
-</span>&nbsp;
-<span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
-{{note.accomplished ? 'done' : 'pending'}}
-</span>&nbsp;
-<span class="label label-primary">
-<small>Due:</small>
-<time>{{note.dueDate ? (note.dueDate | date:"EEEE MMM d, y") : 'Timeless'}}</time>
-</span>
-<br>
-<h4><strong>{{note.title}}</strong></h4>
+<div ng-click="expanded = !expanded">
+  <span ng-class="{'label label-info': note.priority === 'low',
+  'label label-warning': note.priority === 'medium',
+  'label label-danger': note.priority === 'high'}">
+  {{note.priority}}
+  </span>&nbsp;
+  <span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
+  {{note.accomplished ? 'done' : 'pending'}}
+  </span>&nbsp;
+  <span class="label label-primary">
+  <small>Due:</small>
+  <time>{{note.dueDate ? (note.dueDate | date:"EEEE MMM d, y") : 'Timeless'}}</time>
+  </span>
+  <span class="label label-default" ng-repeat="tag in note.tags">{{tag}}</span>
+  <br>
+  <h4><strong>{{note.title}}</strong></h4>
+  <p ng-show="expanded">
+    <small>Created On:</small>
+    <time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time><br>
+    <small>Modified On:</small>
+    <time>{{(note.modyfiedOn | date:"EEEE MMM d, y")}}</time><br>
+    Details: {{note.details || 'None'}}
+  </p>
+</div>

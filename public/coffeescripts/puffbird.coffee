@@ -1,5 +1,5 @@
 app = angular
-	.module 'puffbird', ['ngRoute', 'ngResource', 'ngCookies'] 
+	.module 'puffbird', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap'] 
 	.constant 'title', 'Puffbird' 
 	.constant 'toastr', toastr
 

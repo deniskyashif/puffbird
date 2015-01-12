@@ -32,6 +32,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="noteTags" class="col-md-2 control-label">Tags</label>
+                <div class="col-md-8">
+                    <input type="text" ng-model="note.tags" ng-list=", " ng-trim="true" 
+                        class="form-control" id="noteTags" placeholder="Enumerate tags separated with comma...">
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
                     <button class="btn btn-default">Cancel</button>
                     <button ng-click="noteCtrl.create(note)" type="submit" class="btn btn-primary">Submit</button>
