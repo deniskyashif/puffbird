@@ -23,7 +23,7 @@ puffbird.controller 'NoteController', ['$location', 'NoteResource', 'notificatio
 
     @.toggleAccomplished = (note) ->
       note.accomplished = !note.accomplished
-      NoteResource.update note
+      NoteResource.update id: note._id, note
 
     @.openCalendar = ($event, calendarType) =>
       $event.preventDefault()
