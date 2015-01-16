@@ -32,4 +32,6 @@ puffbird.controller 'NoteController', ['$location', 'NoteResource', 'notificatio
         @.fromCalendarOpened = true  
       else if calendarType is 'to'
         @.toCalendarOpened = true
+      else if calendarType is 'due'
+        @.dueCalendarOpened = true
   ]

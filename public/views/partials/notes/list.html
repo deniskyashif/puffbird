@@ -37,6 +37,7 @@
       <ul class="list-group">
         <li class="list-group-item puffbird-note"
           ng-repeat="note in noteCtrl.notes
+          | dateRangeFilter:fromDate:toDate
           | filter: {priority: priority, accomplished: status}
           | orderBy: orderBy:orderType">
           <div class="row">
