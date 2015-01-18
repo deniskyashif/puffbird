@@ -20,13 +20,6 @@ module.exports = function(grunt) {
                 ext: '.js'
             }
         },
-        uglify: {
-            my_target: {
-                files: {
-                    'public/stylesheets/puffbird.css': ['public/stylesheets/puffbird.min.css']
-                }
-            }
-        },
         watch: {
             express: {
                 files: ['**/*.js'],
@@ -44,13 +37,11 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-coffee');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', [
         'express:dev',
         'coffee',
-        'uglify',
         'watch'
     ]);
 };
