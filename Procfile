@@ -1,1 +1,1 @@
-web: grunt build
+web: node bin/www

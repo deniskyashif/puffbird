@@ -2,7 +2,8 @@
   "name": "puffbird-api",
   "version": "0.0.0",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "postinstall": "bower install && grunt build"
   },
   "description": "simple note making application",
   "main": "bin/www",
