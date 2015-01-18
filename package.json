@@ -1,15 +1,15 @@
 {
-  "name": "puffbird-api",
+  "name": "puffbird",
   "version": "0.0.0",
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "bower install && grunt build"
+    "postinstall": "bower install"
   },
   "description": "simple note making application",
   "main": "bin/www",
   "repository": {
     "type": "git",
-    "url": "https://github.com/deniskyashif/puffbird-api"
+    "url": "https://github.com/deniskyashif/puffbird"
   },
   "author": "deniskyashif",
   "license": "MIT",
