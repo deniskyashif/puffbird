@@ -33,7 +33,11 @@ var noteSchema = Schema({
 		ref: 'User',
 		required: true
 	},
-	tags: [String]
+	tags: [String],
+	isDeleted: {
+		type: Boolean,
+		default: false
+	}
 });
 
 var Note = mongoose.model('Note', noteSchema);

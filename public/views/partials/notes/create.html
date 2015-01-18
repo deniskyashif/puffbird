@@ -1,11 +1,11 @@
-<div ng-controller="NoteController as noteCtrl" class="well bs-component">
-    <form class="form-horizontal">
+<div class="well bs-component">
+    <form class="form-horizontal" name="createNoteForm">
         <fieldset>
             <legend>Create Note</legend>
             <div class="form-group">
                 <label for="noteTitle" class="col-md-2 control-label">Title</label>
                 <div class="col-md-8">
-                    <input ng-model="note.title" type="text" class="form-control" id="noteTitle" placeholder="Title">
+                    <input ng-model="note.title" type="text" class="form-control" id="noteTitle" placeholder="Title..." ng-required="true">
                 </div>
             </div>
             <div class="form-group">
@@ -19,13 +19,13 @@
                 <div class="col-md-8">
                     <div class="input-group">
                         <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="noteCtrl.openCalendar($event, 'due')">
+                        <button class="btn btn-default" ng-click="ctrl.openCalendar($event, 'due')">
                         <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                         </span>
-                        <input type="text" name="dueDate" class="form-control" datepicker-popup="{{noteCtrl.format}}"
-                        ng-model="note.dueDate" is-open="noteCtrl.dueCalendarOpened" min-date="noteCtrl.minDate"
-                        max-date="noteCtrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+                        <input type="text" name="dueDate" class="form-control" datepicker-popup="{{ctrl.format}}"
+                        ng-model="note.dueDate" is-open="ctrl.dueCalendarOpened" min-date="ctrl.minDate"
+                        max-date="ctrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <label for="select" class="col-md-2 control-label">Priority</label>
                 <div class="col-md-8">
                     <select name="priority" ng-model="note.priority" class="form-control">
-                        <option value="low" selected="selected">Low</option>
+                        <option value="low" ng-selected="true">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                     </select>
@@ -48,8 +48,10 @@
             </div>
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-default">Cancel</button>
-                    <button ng-click="noteCtrl.create(note)" type="submit" class="btn btn-primary">Submit</button>
+                    <input type="button" class="btn btn-default"
+                    ng-click="ctrl.clearCreateNoteForm(createNoteForm)" value="Clear">
+                    <input type="submit" class="btn btn-primary" ng-click="ctrl.create(note, createNoteForm)"
+                    ng-disabled="!createNoteForm.$valid" value="Submit">
                 </div>
             </div>
         </fieldset>

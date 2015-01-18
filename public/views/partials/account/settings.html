@@ -1,0 +1,43 @@
+<div class="row" ng-controller="UsersController as ctrl">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 well bs-component">
+        <form class="form-horizontal" name="settingsForm">
+            <fieldset>
+                <legend>Settings</legend>
+                <div class="form-group">
+                    <label for="username" class="col-lg-2 control-label">Username</label>
+                    <div class="col-lg-8">
+                        <input type="text" ng-model="ctrl.currentUser.username" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-lg-2 control-label">E-Mail</label>
+                    <div class="col-lg-8">
+                        <input ng-model="ctrl.currentUser.email" type="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-lg-2 control-label">First Name</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" ng-model="ctrl.currentUser.firstName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-lg-2 control-label">Last Name</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" ng-model="ctrl.currentUser.lastName" required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <a href="#/home" class="btn btn-default">Cancel</a>
+                        <a ng-disabled="settingsForm.$invalid" ng-click="ctrl.save()" type="button" 
+                            class="btn btn-primary">Save</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-lg-2"></div>
+</div>

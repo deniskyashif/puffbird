@@ -1,29 +1,39 @@
-puffbird.controller 'NoteController', ['$location', 'NoteResource', 'notificationService',
-  ($location, NoteResource, notificationService) ->
+puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
+  (NoteResource, notificationService) ->
     @.format = 'dd-MMM-yyyy'
     @.minDate = '1900-01-01'
     @.maxDate = '2100-01-01'
+    @.showCreateNoteForm = false
     
     @.loadNotes = =>
       @.notes = NoteResource.query().$promise
         .then (notes) =>
           @.notes = notes;
-          
-    @.create = (note) ->
-      newNote = new NoteResource note
-      newNote.$save ->
-        notificationService.success 'Note has been created.'
-        $location.path '/notes'
 
+    @.create = (note, form) =>
+      if !form.$valid
+        notificationService.error 'Please fill the required fields.'
+      newNote = new NoteResource note
+      newNote.$save (note) =>
+        notificationService.success 'Note has been created.'
+        @.toggleCreateNoteForm()
+        @.notes.push note
+
+    @.clearCreateNoteForm = (form) ->
+      form.$setPristine()
+ 
     @.delete = (note) =>
+      note.isDeleted = true
       note.$delete( id: note._id, =>  
         notificationService.success 'Note deleted.'
-        @.loadNotes()
       ) 
 
     @.toggleAccomplished = (note) ->
       note.accomplished = !note.accomplished
       NoteResource.update id: note._id, note
+
+    @.toggleCreateNoteForm = =>
+      @.showCreateNoteForm = !@.showCreateNoteForm
 
     @.openCalendar = ($event, calendarType) =>
       $event.preventDefault()

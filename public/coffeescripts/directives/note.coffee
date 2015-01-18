@@ -1,5 +1,5 @@
 puffbird.directive 'note', [ ->
-  restrict: 'A'
+  restrict: 'AE'
   scope: 
     note: '='
   templateUrl: 'views/directives/note.html'

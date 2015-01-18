@@ -14,11 +14,11 @@
   <span class="label label-default" ng-repeat="tag in note.tags">{{tag}}</span>
   <br>
   <h4><strong>{{note.title}}</strong></h4>
-  <p ng-show="expanded">
+  <div ng-show="expanded">
     <small>Created On:</small>
     <time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time><br>
     <small>Modified On:</small>
     <time>{{(note.modyfiedOn | date:"EEEE MMM d, y")}}</time><br>
-    Details: {{note.details || 'None'}}
-  </p>
+    Details: <pre>{{note.details || 'None'}}</pre>
+  </div>
 </div>

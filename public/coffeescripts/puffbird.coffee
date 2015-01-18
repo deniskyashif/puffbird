@@ -14,30 +14,22 @@ app.config ($routeProvider, $httpProvider) ->
 	$routeProvider
 		.when '/login',
 			templateUrl: '/views/partials/account/login.html'
-			controller: 'UserController'
-			controllerAs: 'userCtrl'
+			controller: 'AccountController'
 		.when '/signup',
 			templateUrl: '/views/partials/account/signup.html'
-			controller: 'UserController'
-			controllerAs: 'userCtrl'
+			controller: 'AccountController'
+		.when '/settings',
+			templateUrl: '/views/partials/account/settings.html'
+			controller: 'UsersController'
 		.when '/feedback',
 			templateUrl: '/views/partials/feedback.html'
 			controller: 'FeedbackController',
-			controllerAs: 'fbCtrl'
-		.when '/notes/create',
-			templateUrl: '/views/partials/notes/create.html'
-			controller: 'NoteController'
-			controllerAs: 'noteCtrl'
-			resolve: routeUserChecks.authenticated
 		.when '/notes',
 			templateUrl: '/views/partials/notes/list.html'
-			controller: 'NoteController'
-			controllerAs: 'noteCtrl'
+			controller: 'NotesController'
 			resolve: routeUserChecks.authenticated
 		.when '/home',
 			templateUrl: '/views/partials/home.html'
-			controller: 'HomeController'
-			controllerAs: 'homeCtrl'
 		.otherwise
 			redirectTo: '/home'
 

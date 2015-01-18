@@ -1,4 +1,4 @@
-puffbird.controller 'UserController', ['$location', 'notificationService', 'authService', 'identityService',
+puffbird.controller 'AccountController', ['$location', 'notificationService', 'authService', 'identityService',
 	($location, notificationService, authService, identityService) -> 
 		
 		@.identityService = identityService

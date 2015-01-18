@@ -1,2 +1,0 @@
-puffbird.controller 'HomeController', [ ->
-]

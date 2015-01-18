@@ -1,8 +1,8 @@
 var users = require('../data/users'),
   encryption = require('../utilities/encryption'),
-  promise = require('bluebird');
+  Promise = require('bluebird');
 
-promise.promisifyAll(users);
+Promise.promisifyAll(users);
 
 module.exports = {
   getAll: function(req, res) {
@@ -73,7 +73,7 @@ module.exports = {
 
         users.update(req.body._id, updatedUserData)
           .then(function(user) {
-            res.status(200).end();
+            res.status(200).send(user);
           }, function(err) {
             return res.status(400).send({
               message: 'Couldn\'t update user.'
