@@ -1,3 +1,5 @@
+var dev = false;
+
 module.exports = function(grunt) {
     grunt.initConfig({
         express: {
@@ -39,9 +41,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('build', [
-        'express:dev',
-        'coffee',
-        'watch'
-    ]);
+    if(dev){
+        grunt.registerTask('build', ['express:dev','coffee','watch']);
+    } else {
+        grunt.registerTask('build', ['coffee']);    
+    }
 };
