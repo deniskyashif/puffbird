@@ -10,7 +10,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: '',
+        db: 'mongodb://admin:puffbird@ds031681.mongolab.com:31681/puffbird',
         port: process.env.PORT || DEV_PORT
     }
 };
