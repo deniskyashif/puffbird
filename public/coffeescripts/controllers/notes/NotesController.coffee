@@ -3,7 +3,7 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
     @.format = 'dd-MMM-yyyy'
     @.minDate = '1900-01-01'
     @.maxDate = '2100-01-01'
-    @.showCreateNoteForm = false
+    @.showCreateNoteForm = no
     
     @.loadNotes = =>
       @.notes = NoteResource.query().$promise
@@ -19,7 +19,7 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
         @.toggleCreateNoteForm()
         @.notes.push note
 
-    @.clearCreateNoteForm = (form) ->
+    @.clear = (form) ->
       form.$setPristine()
  
     @.delete = (note) =>
