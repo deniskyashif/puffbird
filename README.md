@@ -1,5 +1,5 @@
 puffbird
 ========
+![puffbird logo](./public/images/favicon.ico)  
+track your daily tasks and achievements  
 
-track your tasks and achievements
-<!-- ![puffbird logo](http://i.imgur.com/nDCZMn7.jpg?1 "puffbird logo") -->
