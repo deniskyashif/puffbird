@@ -1,8 +1,5 @@
-var users = require('../data/users'),
-  encryption = require('../utilities/encryption'),
-  Promise = require('bluebird');
-
-Promise.promisifyAll(users);
+var users = require('../data/users')
+  , encryption = require('../utilities/encryption');
 
 module.exports = {
   getAll: function(req, res) {

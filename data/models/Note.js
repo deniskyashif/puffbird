@@ -1,5 +1,5 @@
-var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+var mongoose = require('mongoose')
+	, Schema = mongoose.Schema;
 
 var noteSchema = Schema({
 	title: {
@@ -14,7 +14,7 @@ var noteSchema = Schema({
 		type: Date,
 		default: Date.now
 	},
-	modyfiedOn:{
+	modifiedOn:{
 		type: Date,
 		default: Date.now
 	},

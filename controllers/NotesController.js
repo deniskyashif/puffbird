@@ -55,7 +55,7 @@ module.exports = {
 			return;
 		}
 
-		updatedNoteData.modyfiedOn = new Date();
+		updatedNoteData.modifiedOn = new Date();
 
 		notes.update(id, userId, updatedNoteData)
 			.then(function(note) {

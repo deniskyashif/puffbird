@@ -7,7 +7,6 @@ var app = express(),
 	config = require('./../config/config')[env],
 	router = express.Router();
 
-
 require('./../config/mongoose')(config);
 require('./../config/routes')(router);
 require('./../config/express')(app, config, router);

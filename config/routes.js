@@ -19,6 +19,12 @@ module.exports = function(router) {
     router.put('/api/notes/:id', auth.isAuthenticated, controllers.notes.update);
     router.delete('/api/notes/:id', auth.isAuthenticated, controllers.notes.remove);
 
+    //feedback
+    router.get('/api/feedback/:id', controllers.feedback.getById);
+    router.get('/api/feedback', controllers.feedback.getAll);
+    router.post('/api/feedback', controllers.feedback.create);
+    router.delete('/api/feedback/:id', controllers.feedback.remove);
+
     router.get('/api/*', function(req, res) {
         res.status(404);
         res.end();
