@@ -11,8 +11,8 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
           @.notes = notes;
 
     @.create = (note, form) =>
-      if !form.$valid
-        notificationService.error 'Please fill the required fields.'
+      if form.$invalid
+        return notificationService.error 'Please fill the required fields.'
       newNote = new NoteResource note
       newNote.$save (note) =>
         notificationService.success 'Note has been created.'

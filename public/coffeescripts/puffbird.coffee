@@ -27,7 +27,6 @@ app.config ($routeProvider, $httpProvider) ->
 		.when '/notes',
 			templateUrl: '/views/partials/notes/list.html'
 			controller: 'NotesController'
-			resolve: routeUserChecks.authenticated
 		.when '/home',
 			templateUrl: '/views/partials/home.html'
 		.otherwise
