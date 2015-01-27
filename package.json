@@ -1,6 +1,6 @@
 {
   "name": "puffbird",
-  "version": "0.7",
+  "version": "0.11.14",
   "scripts": {
     "start": "node ./bin/www",
     "postinstall": "bower install && grunt build"
