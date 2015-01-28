@@ -9,7 +9,7 @@ var DEV_PORT = 3030
 
 module.exports = function(env) {
   console.log(env);
-  if (env === 'dev') {  
+  if (env === 'development') {  
     config.db = 'mongodb://localhost/puffbird';
   }
 

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 var express = require('express');
 
-var env = process.env.NODE_ENV || 'dev'; 
-console.log(process.env.NODE_ENV);
+var env = process.env.NODE_ENV || 'production'; 
 
 var app = express(),
 	config = require('./../config/config')(env),
