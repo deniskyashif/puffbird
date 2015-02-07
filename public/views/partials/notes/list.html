@@ -10,14 +10,14 @@
   </div>
   <div class="row" ng-show="ctrl.showCreateNoteForm">
     <div class="col-md-12">
-      <div create-note="create-note" ctrl="ctrl"></div>
+      <div create-note></div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2">
       <div class="form-group">
         <label for="tags" class="control-label">Tags:</label>
-        <input type="text" name="tags" class="form-control" />
+        <input type="text" ng-model="tags" ng-list="," ng-trim="true" class="form-control" />
       </div>
       <div class="form-group">
         <label for="fromDate" class="control-label">Due From:</label>
@@ -56,15 +56,11 @@
         <li class="list-group-item puffbird-note"
           ng-repeat="note in ctrl.notes
           | dateRangeFilter:fromDate:toDate:timeless
+          | tagsFilter:tags
           | filter: {priority: priority, accomplished: status, isDeleted: false}
           | orderBy: orderBy:orderType">
           <div class="row">
-            <div note="note" class="col-md-9"></div>
-            <div class="col-md-3">
-              <button ng-click="ctrl.delete(note)" class="btn btn-xs btn-danger">Delete</button>
-              <button ng-click="ctrl.toggleAccomplished(note)"
-              class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}</button>
-            </div>
+            <div note="note" class="col-md-12"></div>
           </div>
         </li>
       </ul>

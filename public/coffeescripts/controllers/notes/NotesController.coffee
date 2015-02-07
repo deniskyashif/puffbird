@@ -39,9 +39,9 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
       $event.preventDefault()
       $event.stopPropagation()
       if calendarType is 'from' 
-        @.fromCalendarOpened = true  
+        @.fromCalendarOpened = yes  
       else if calendarType is 'to'
-        @.toCalendarOpened = true
+        @.toCalendarOpened = yes
       else if calendarType is 'due'
-        @.dueCalendarOpened = true
+        @.dueCalendarOpened = yes
   ]

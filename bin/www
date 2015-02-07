@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-var express = require('express');
-
-var env = process.env.NODE_ENV || 'production'; 
-
-var app = express(),
-	config = require('./../config/config')(env),
-	router = express.Router();
+var express = require('express')
+  , env = process.env.NODE_ENV || 'development'
+  , app = express()
+	, config = require('./../config/config')(env)
+	, router = express.Router();
 
 require('./../config/mongoose')(config);
 require('./../config/routes')(router);

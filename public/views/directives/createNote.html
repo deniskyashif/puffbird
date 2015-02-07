@@ -1,59 +1,59 @@
 <div class="well bs-component">
-    <form class="form-horizontal" name="createNoteForm">
-        <fieldset>
-            <legend>Create Note</legend>
-            <div class="form-group">
-                <label for="noteTitle" class="col-md-2 control-label">Title</label>
-                <div class="col-md-8">
-                    <input ng-model="note.title" type="text" class="form-control" id="noteTitle" placeholder="Title..." ng-required="true">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="noteDetails" class="col-md-2 control-label">Details</label>
-                <div class="col-md-8">
-                    <textarea ng-model="note.details" class="form-control" rows="3" id="noteDetails" placeholder="Details..."></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="dueDate" class="col-md-2 control-label">Due Date</label>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="ctrl.openCalendar($event, 'due')">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                        </span>
-                        <input type="text" name="dueDate" class="form-control" datepicker-popup="{{ctrl.format}}"
-                        ng-model="note.dueDate" is-open="ctrl.dueCalendarOpened" min-date="ctrl.minDate"
-                        max-date="ctrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="select" class="col-md-2 control-label">Priority</label>
-                <div class="col-md-8">
-                    <select name="priority" ng-model="note.priority" class="form-control">
-                        <option value="low" ng-selected="true">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="noteTags" class="col-md-2 control-label">Tags</label>
-                <div class="col-md-8">
-                    <input type="text" ng-model="note.tags" ng-list=", " ng-trim="true"
-                    class="form-control" id="noteTags" placeholder="Enumerate tags separated with comma...">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10 col-md-offset-2">
-                    <input type="button" class="btn btn-default"
-                    ng-click="ctrl.clearCreateNoteForm(createNoteForm)" value="Clear">
-                    <input type="submit" class="btn btn-primary" ng-click="ctrl.create(note, createNoteForm)"
-                    ng-disabled="!createNoteForm.$valid" value="Submit">
-                </div>
-            </div>
-        </fieldset>
-    </form>
+  <form class="form-horizontal" name="createNoteForm">
+    <fieldset>
+      <legend>Create Note</legend>
+      <div class="form-group">
+        <label for="noteTitle" class="col-md-2 control-label">Title</label>
+        <div class="col-md-8">
+          <input ng-model="note.title" type="text" class="form-control" id="noteTitle" placeholder="Title..." ng-required="true">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="noteDetails" class="col-md-2 control-label">Details</label>
+        <div class="col-md-8">
+          <textarea ng-model="note.details" class="form-control" rows="3" id="noteDetails" placeholder="Details..."></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dueDate" class="col-md-2 control-label">Due Date</label>
+        <div class="col-md-8">
+          <div class="input-group">
+            <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="ctrl.openCalendar($event, 'due')">
+            <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+            </span>
+            <input type="text" name="dueDate" class="form-control" datepicker-popup="{{ctrl.format}}"
+            ng-model="note.dueDate" is-open="ctrl.dueCalendarOpened" min-date="ctrl.minDate"
+            max-date="ctrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="select" class="col-md-2 control-label">Priority</label>
+        <div class="col-md-8">
+          <select name="priority" ng-model="note.priority" class="form-control">
+            <option value="low" ng-selected="true">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="noteTags" class="col-md-2 control-label">Tags</label>
+        <div class="col-md-8">
+          <input type="text" ng-model="note.tags" ng-list=", " ng-trim="true"
+          class="form-control" id="noteTags" placeholder="Enumerate tags separated with comma...">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+          <input type="button" class="btn btn-default"
+          ng-click="ctrl.clearCreateNoteForm(createNoteForm)" value="Clear">
+          <input type="submit" class="btn btn-primary" ng-click="ctrl.create(note, createNoteForm)"
+          ng-disabled="!createNoteForm.$valid" value="Submit">
+        </div>
+      </div>
+    </fieldset>
+  </form>
 </div>

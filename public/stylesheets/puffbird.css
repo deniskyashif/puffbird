@@ -15,6 +15,11 @@ body{
     margin-bottom: 1px;
 }
 
+.puffbird-note h4:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .puffbird-note:hover{
     background-color: #F5F5F5;
 }

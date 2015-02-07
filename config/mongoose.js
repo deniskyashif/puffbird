@@ -1,7 +1,7 @@
-var mongoose = require('mongoose'),
-  User = require('../data/models/User'),
-  Note = require('../data/models/Note'),
-  Note = require('../data/models/Feedback');
+var mongoose = require('mongoose')
+  , User = require('../data/models/User')
+  , Note = require('../data/models/Note')
+  , Feedback = require('../data/models/Feedback');
 
 module.exports = function(config) {
   mongoose.connect(config.db);
@@ -9,10 +9,9 @@ module.exports = function(config) {
 
   db.once('open', function(err) {
     if (err) {
-      console.log('Database could not be opened: ' + err);
-      return;
+      return console.log('Database could not be opened: ' + err);
     }
-    console.log('Database up and running...');
+    console.log('Database up and running on ' + config.db);
   });
 
   db.on('error', function(err) {
@@ -20,4 +19,4 @@ module.exports = function(config) {
   });
 
   User.seedInitialUsers();
-};
+};  

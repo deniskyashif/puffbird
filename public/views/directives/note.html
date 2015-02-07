@@ -1,4 +1,4 @@
-<div ng-click="expanded = !expanded">
+<div>
   <span ng-class="{'label label-info': note.priority === 'low',
   'label label-warning': note.priority === 'medium',
   'label label-danger': note.priority === 'high'}">
@@ -13,12 +13,16 @@
   </span>
   <span class="label label-default" ng-repeat="tag in note.tags">{{tag}}</span>
   <br>
-  <h4><strong>{{note.title}}</strong></h4>
+  <h4 ng-click="expanded = !expanded"><strong>{{note.title}}</strong></h4>
   <div ng-show="expanded">
     <small>Created On:</small>
     <time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time><br>
     <small>Modified On:</small>
     <time>{{(note.modifiedOn | date:"EEEE MMM d, y")}}</time><br>
-    Details: <pre>{{note.details || 'None'}}</pre>
+Details: <pre>{{note.details || 'None'}}</pre>
   </div>
+  <button ng-click="delete(note)" class="btn btn-xs btn-danger">Delete</button>
+  <button ng-click="toggleAccomplished(note)"
+  class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}
+  </button>
 </div>

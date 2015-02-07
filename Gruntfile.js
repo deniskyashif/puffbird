@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         },
         watch: {
             express: {
-                files: ['**/*.js'],
+                files: ['**/*.js', '!./public/**/*'],
                 tasks: ['express:dev'],
                 options: {
                     spawn: false
@@ -38,7 +38,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
 
     grunt.registerTask('dev', ['express:dev', 'coffee', 'watch']);
     grunt.registerTask('build', ['coffee']);
