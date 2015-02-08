@@ -1,10 +1,15 @@
 puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
   (NoteResource, notificationService) ->
+    @.showCreateNoteForm = no
     @.format = 'dd-MMM-yyyy'
     @.minDate = '1900-01-01'
     @.maxDate = '2100-01-01'
-    @.showCreateNoteForm = no
-    
+    @.today = (new Date()).toLocaleDateString()
+    @.endOfWeek = (new Date()).endOfWeek().toLocaleDateString('en-US')
+    @.dateOptions = 
+      formatYear: 'yy'
+      startingDay: 1
+      
     @.loadNotes = =>
       @.notes = NoteResource.query().$promise
         .then (notes) =>

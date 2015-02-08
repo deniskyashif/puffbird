@@ -23,9 +23,10 @@
             <i class="glyphicon glyphicon-calendar"></i>
             </button>
             </span>
+            <!-- date-picker control -->
             <input type="text" name="dueDate" class="form-control" datepicker-popup="{{ctrl.format}}"
             ng-model="note.dueDate" is-open="ctrl.dueCalendarOpened" min-date="ctrl.minDate"
-            max-date="ctrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+            max-date="ctrl.maxDate" datepicker-options="ctrl.dateOptions" ng-required="false" close-text="Close" />
           </div>
         </div>
       </div>

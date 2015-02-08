@@ -1,11 +1,13 @@
 <div class="jumbotron" ng-controller="NotesController as ctrl" ng-init="ctrl.loadNotes()">
   <div class="row">
-    <div class="col-md-10">
-      <h3>Notes</h3>
+    <div class="col-md-9">
+      <h3>Dashboard</h3>
     </div>
-    <div class="col-md-2">
-      <input type="button" class="btn btn-sm btn-primary" value="{{ctrl.showCreateNoteForm ? 'Cancel' : 'New'}}"
-      ng-click="ctrl.toggleCreateNoteForm()">
+    <div class="col-md-3">
+      <div class="pull-right">
+        <input type="button" class="btn btn-sm btn-primary" ng-click="ctrl.toggleCreateNoteForm()" value="{{ctrl.showCreateNoteForm ? 'Cancel' : 'Create'}}">
+        <input type="button" class="btn btn-sm btn-primary" value="Generate Report">
+      </div>
     </div>
   </div>
   <div class="row" ng-show="ctrl.showCreateNoteForm">
@@ -22,9 +24,10 @@
       <div class="form-group">
         <label for="fromDate" class="control-label">Due From:</label>
         <div class="input-group">
+          <!-- date-picker control -->
           <input type="text" name="fromDate" class="form-control" datepicker-popup="{{ctrl.format}}"
-          ng-model="fromDate" is-open="ctrl.fromCalendarOpened" min-date="ctrl.minDate"
-          max-date="toDate || ctrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+          ng-model="fromDate" is-open="ctrl.fromCalendarOpened" min-date="ctrl.minDate" max-date="toDate || ctrl.maxDate"
+          datepicker-options="ctrl.dateOptions" close-text="Close" ng-init="fromDate = ctrl.today"/>
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'from')">
           <i class="glyphicon glyphicon-calendar"></i>
@@ -35,9 +38,10 @@
       <div class="form-group">
         <label for="toDate" class="control-label">Due To:</label>
         <div class="input-group">
+          <!-- date-picker control -->
           <input type="text" name="toDate" class="form-control" datepicker-popup="{{ctrl.format}}"
-          ng-model="toDate" is-open="ctrl.toCalendarOpened" min-date="fromDate || ctrl.minDate"
-          max-date="ctrl.maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
+          ng-model="toDate" is-open="ctrl.toCalendarOpened" min-date="fromDate || ctrl.minDate" max-date="ctrl.maxDate" 
+          datepicker-options="ctrl.dateOptions" close-text="Close" ng-init="toDate = ctrl.endOfWeek"/>
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'to')">
           <i class="glyphicon glyphicon-calendar"></i>
@@ -53,7 +57,7 @@
     </div>
     <div class="col-md-8">
       <ul class="list-group">
-        <li class="list-group-item puffbird-note"
+        <li class="list-group-item puffbird-note" ng-class="{'note-pending': !note.accomplished, 'note-accomplished': note.accomplished}"
           ng-repeat="note in ctrl.notes
           | dateRangeFilter:fromDate:toDate:timeless
           | tagsFilter:tags

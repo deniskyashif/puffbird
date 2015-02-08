@@ -1,28 +1,40 @@
-<div>
-  <span ng-class="{'label label-info': note.priority === 'low',
-  'label label-warning': note.priority === 'medium',
-  'label label-danger': note.priority === 'high'}">
-  {{note.priority}}
-  </span>&nbsp;
-  <span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
-  {{note.accomplished ? 'done' : 'pending'}}
-  </span>&nbsp;
-  <span class="label label-primary">
-  <small>Due:</small>
-  <time>{{note.dueDate ? (note.dueDate | date:"EEEE MMM d, y") : 'Timeless'}}</time>
-  </span>
-  <span class="label label-default" ng-repeat="tag in note.tags">{{tag}}</span>
-  <br>
-  <h4 ng-click="expanded = !expanded"><strong>{{note.title}}</strong></h4>
-  <div ng-show="expanded">
-    <small>Created On:</small>
-    <time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time><br>
-    <small>Modified On:</small>
-    <time>{{(note.modifiedOn | date:"EEEE MMM d, y")}}</time><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <span>
+      <small>Due:</small>
+      <time>{{note.dueDate ? (note.dueDate | date:"EEE, d, MMM, y") : 'Timeless'}}</time>
+      </span>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <span ng-class="{'label label-info': note.priority === 'low',
+        'label label-warning': note.priority === 'medium',
+        'label label-danger': note.priority === 'high'}">
+        {{note.priority}}
+        </span>&nbsp;
+        <span ng-class="{'label label-danger': !note.accomplished, 'label label-success': note.accomplished}">
+        {{note.accomplished ? 'done' : 'pending'}}
+        </span>&nbsp;
+        <span class="label label-default" ng-repeat="tag in note.tags">{{tag}}</span><br>
+        <h4 ng-click="expanded = !expanded"><strong>{{note.title}}</strong></h4>
+      </div>
+      <div class="row">
+        <div ng-show="expanded">
+          <small>Created On:</small>
+          <time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time><br>
+          <small>Modified On:</small>
+          <time>{{(note.modifiedOn | date:"EEEE MMM d, y")}}</time><br>
 Details: <pre>{{note.details || 'None'}}</pre>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button ng-click="toggleAccomplished(note)" class="btn btn-sm btn-default">
+        {{note.accomplished ? '&nbsp;Pend&nbsp;&nbsp;':'Complete'}}
+      </button><br><br>
+      <button ng-click="delete(note)" class="btn btn-sm btn-danger" ng-show="expanded">Delete</button>
+    </div>
   </div>
-  <button ng-click="delete(note)" class="btn btn-xs btn-danger">Delete</button>
-  <button ng-click="toggleAccomplished(note)"
-  class="btn btn-xs btn-default">{{note.accomplished ? 'Pend':'Complete'}}
-  </button>
 </div>

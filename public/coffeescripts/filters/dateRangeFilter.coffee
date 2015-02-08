@@ -1,7 +1,7 @@
 puffbird.filter 'dateRangeFilter', [ ->
   (notes, fromDate, toDate, timeless) ->  
     INVALID_DATE = 'Invalid Date'
-    result = []
+    filtered = []
     
     # date filters
     fromDate = (if (fromDate and not isNaN(Date.parse(fromDate))) then Date.parse(fromDate) else 0)
@@ -11,7 +11,7 @@ puffbird.filter 'dateRangeFilter', [ ->
     if notes and notes.length > 0
       angular.forEach notes, (note, index) ->
         noteDueDate = new Date(note.dueDate)
-        result.push note if (timeless && !note.dueDate) || (fromDate <= noteDueDate and noteDueDate <= toDate)
+        filtered.push note if (timeless && !note.dueDate) || (fromDate <= noteDueDate and noteDueDate <= toDate)
 
-      result
+      filtered
 ]
