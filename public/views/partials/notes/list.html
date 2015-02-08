@@ -6,7 +6,7 @@
     <div class="col-md-3">
       <div class="pull-right">
         <input type="button" class="btn btn-sm btn-primary" ng-click="ctrl.toggleCreateNoteForm()" value="{{ctrl.showCreateNoteForm ? 'Cancel' : 'Create'}}">
-        <input type="button" class="btn btn-sm btn-primary" value="Generate Report">
+        <input type="button" class="btn btn-sm btn-primary" ng-click="ctrl.generateReport(filteredNotes)" value="Generate Report">
       </div>
     </div>
   </div>
@@ -58,11 +58,11 @@
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item puffbird-note" ng-class="{'note-pending': !note.accomplished, 'note-accomplished': note.accomplished}"
-          ng-repeat="note in ctrl.notes
-          | dateRangeFilter:fromDate:toDate:timeless
-          | tagsFilter:tags
-          | filter: {priority: priority, accomplished: status, isDeleted: false}
-          | orderBy: orderBy:orderType">
+          ng-repeat="note in filteredNotes = (ctrl.notes
+                    | dateRangeFilter:fromDate:toDate:timeless
+                    | tagsFilter:tags
+                    | filter: {priority: priority, accomplished: status, isDeleted: false}
+                    | orderBy: orderBy:orderType)">
           <div class="row">
             <div note="note" class="col-md-12"></div>
           </div>

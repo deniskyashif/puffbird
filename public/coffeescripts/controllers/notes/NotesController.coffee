@@ -4,8 +4,8 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
     @.format = 'dd-MMM-yyyy'
     @.minDate = '1900-01-01'
     @.maxDate = '2100-01-01'
-    @.today = (new Date()).toLocaleDateString()
-    @.endOfWeek = (new Date()).endOfWeek().toLocaleDateString()
+    @.today = (new Date()).toLocaleDateString('en-US')
+    @.endOfWeek = (new Date()).endOfWeek().toLocaleDateString('en-US')
     @.dateOptions = 
       formatYear: 'yy'
       startingDay: 1
@@ -32,6 +32,9 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
       note.$delete( id: note._id, =>  
         notificationService.success 'Note deleted.'
       ) 
+
+    @.generateReport = (x) =>
+      console.log x
 
     @.toggleAccomplished = (note) ->
       note.accomplished = !note.accomplished
