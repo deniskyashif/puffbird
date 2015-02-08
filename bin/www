@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var express = require('express')
-  , env = process.env.NODE_ENV || 'development'
+  , env = process.env.NODE_ENV || 'production'
   , app = express()
 	, config = require('./../config/config')(env)
 	, router = express.Router();

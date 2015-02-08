@@ -5,7 +5,7 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
     @.minDate = '1900-01-01'
     @.maxDate = '2100-01-01'
     @.today = (new Date()).toLocaleDateString()
-    @.endOfWeek = (new Date()).endOfWeek().toLocaleDateString('en-US')
+    @.endOfWeek = (new Date()).endOfWeek().toLocaleDateString()
     @.dateOptions = 
       formatYear: 'yy'
       startingDay: 1
