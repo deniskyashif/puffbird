@@ -36,5 +36,5 @@ public/javascripts/
 #Grunt 
 .sublime-grunt.cache
 
-
+tmp/**/*.*
 notes.txt

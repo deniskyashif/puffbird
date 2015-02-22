@@ -1,5 +1,5 @@
-puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
-  (NoteResource, notificationService) ->
+puffbird.controller 'NotesController', ['$window', 'NoteResource', 'reportService', 'notificationService',
+  ($window, NoteResource, reportService, notificationService) ->
     @.showCreateNoteForm = no
     @.format = 'dd-MMM-yyyy'
     @.minDate = '1900-01-01'
@@ -33,9 +33,11 @@ puffbird.controller 'NotesController', ['NoteResource', 'notificationService',
         notificationService.success 'Note deleted.'
       ) 
 
-    @.generateReport = (x) =>
-      console.log x
-
+    @.generateReport = (notes) =>
+      reportService.create(notes)
+        .then (response) ->
+          $window.open response.data
+          
     @.toggleAccomplished = (note) ->
       note.accomplished = !note.accomplished
       NoteResource.update id: note._id, note

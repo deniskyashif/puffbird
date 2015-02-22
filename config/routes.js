@@ -1,5 +1,5 @@
-var auth = require('./auth')
-  , controllers = require('../controllers');
+var auth = require('./auth'),
+  controllers = require('../controllers');
 
 module.exports = function(router) {
   //auth
@@ -24,6 +24,10 @@ module.exports = function(router) {
   router.get('/api/feedback', auth.isAuthenticated, controllers.feedback.getAll);
   router.post('/api/feedback', controllers.feedback.create);
   router.delete('/api/feedback/:id', auth.isAuthenticated, controllers.feedback.remove);
+
+  //reports
+  router.get('/report/:name', auth.isAuthenticated, controllers.reports.get);
+  router.post('/api/report', auth.isAuthenticated, controllers.reports.create);
 
   router.get('/api/*', function(req, res) {
     res.status(404);
