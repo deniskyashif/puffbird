@@ -1,5 +1,5 @@
-var users = require('../data/users')
-  , encryption = require('../utilities/encryption');
+var users = require('../data/users'),
+  encryption = require('../utilities/encryption');
 
 module.exports = {
   getAll: function(req, res) {
@@ -39,11 +39,12 @@ module.exports = {
         req.logIn(user, function(err) {
           if (err) {
             res.status(400);
-            return res.send({
-                message: err.toString()
+            res.send({
+              message: err.toString()
             });
+          } else {
+            res.send(user);
           }
-          res.send(user);
         });
       }, function(err) {
         console.log(err);
@@ -51,35 +52,35 @@ module.exports = {
           message: 'User with this username already exists.'
         });
       });
-    },
-    update: function(req, res, next) {
-      var id = req.param('id');
+  },
+  update: function(req, res, next) {
+    var id = req.param('id');
 
-      if (!id) {
-        res.status(400);
-        return;
-      }
-
-      if (req.user._id == id) {
-        var updatedUserData = req.body;
-
-        if (updatedUserData.password && updatedUserData.password.length > 0) {
-          updatedUserData.salt = encryption.generateSalt();
-          updatedUserData.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
-        }
-
-        users.update(req.body._id, updatedUserData)
-          .then(function(user) {
-            res.status(200).send(user);
-          }, function(err) {
-            return res.status(400).send({
-              message: 'Couldn\'t update user.'
-            });
-          });
-      } else {
-        res.status(401).send({
-          message: 'You do not have permissions!'
-        });
-      }
+    if (!id) {
+      res.status(400);
+      return;
     }
+
+    if (req.user._id == id) {
+      var updatedUserData = req.body;
+
+      if (updatedUserData.password && updatedUserData.password.length > 0) {
+        updatedUserData.salt = encryption.generateSalt();
+        updatedUserData.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
+      }
+
+      users.update(req.body._id, updatedUserData)
+        .then(function(user) {
+          res.status(200).send(user);
+        }, function(err) {
+          return res.status(400).send({
+            message: 'Couldn\'t update user.'
+          });
+        });
+    } else {
+      res.status(401).send({
+        message: 'You do not have permissions!'
+      });
+    }
+  }
 };

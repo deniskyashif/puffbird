@@ -45,7 +45,8 @@ module.exports = {
     var id = req.param('id');
 
     if (!id) {
-      return res.status(400);
+      res.status(400);
+      return;
     }
 
     feedback.remove(id)

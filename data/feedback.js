@@ -1,5 +1,5 @@
-var Feedback = require('mongoose').model('Feedback')
-  , Promise = require('bluebird');
+var Feedback = require('mongoose').model('Feedback'),
+  Promise = require('bluebird');
 
 module.exports = {
   getAll: function(userId) {
@@ -19,9 +19,10 @@ module.exports = {
         _id: id
       }).exec(function(err, feedback) {
         if (err) {
-          return reject(err);
+          reject(err);
+        } else {
+          resolve(feedback);
         }
-        resolve(feedback);
       });
     });
   },
@@ -29,19 +30,23 @@ module.exports = {
     return new Promise(function(resolve, reject) {
       Feedback.create(feedback, function(err, feedback) {
         if (err) {
-          return reject(err);
+          reject(err);
+        } else {
+          resolve(feedback);
         }
-        resolve(feedback);
       });
     });
   },
   remove: function(id, userId) {
     return new Promise(function(resolve, reject) {
-      Feedback.remove({_id: id}).exec(function(err) {
+      Feedback.remove({
+        _id: id
+      }).exec(function(err) {
         if (err) {
-          return reject(err);
+          reject(err);
+        } else {
+          resolve();
         }
-        resolve();
       });
     });
   }

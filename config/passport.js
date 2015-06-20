@@ -1,43 +1,47 @@
 var passport = require('passport'),
-    LocalPassport = require('passport-local'),
-    User = require('mongoose').model('User');
+  LocalPassport = require('passport-local'),
+  User = require('mongoose').model('User');
 
 module.exports = function() {
-    passport.use(new LocalPassport(function(username, password, done) {
-        User.findOne({ username: username }).exec(function(err, user) {
-            if (err) {
-                console.log('Error loading user: ' + err);
-                return;
-            }
+  passport.use(new LocalPassport(function(username, password, done) {
+    User.findOne({
+      username: username
+    }).exec(function(err, user) {
+      if (err) {
+        console.log('Error loading user: ' + err);
+        return null;
+      }
 
-            if (user && user.authenticate(password)) {
-                return done(null, user);
-            }
-            else {
-                return done(null, false);
-            }
-        });
-    }));
+      if (user && user.authenticate(password)) {
+        return done(null, user);
+      }
 
-    passport.serializeUser(function(user, done) {
-        if (user) {
-            return done(null, user._id);
-        }
+      return done(null, false);
     });
+  }));
 
-    passport.deserializeUser(function(id, done) {
-        User.findOne({_id: id}).exec(function(err, user) {
-            if (err) {
-                console.log('Error loading user: ' + err);
-                return;
-            }
+  passport.serializeUser(function(user, done) {
+    if (user) {
+      return done(null, user._id);
+    }
 
-            if (user) {
-                return done(null, user);
-            }
-            else {
-                return done(null, false);
-            }
-        });
+    return null;
+  });
+
+  passport.deserializeUser(function(id, done) {
+    User.findOne({
+      _id: id
+    }).exec(function(err, user) {
+      if (err) {
+        console.log('Error loading user: ' + err);
+        return null;
+      }
+
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+      }
     });
+  });
 };

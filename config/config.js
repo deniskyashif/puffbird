@@ -1,6 +1,6 @@
-var DEV_PORT = 3030
-  , path = require('path')
-  , rootPath = path.normalize(__dirname + '/../');
+var DEV_PORT = 3030,
+  path = require('path'),
+  rootPath = path.normalize(__dirname + '/../');
 
 var config = {
   rootPath: rootPath,
@@ -9,7 +9,7 @@ var config = {
 };
 
 module.exports = function(env) {
-  if (env === 'development') {  
+  if (env === 'development') {
     config.db = 'mongodb://localhost/puffbird';
   }
 

@@ -1,5 +1,5 @@
-var User = require('mongoose').model('User')
-  , Promise = require('bluebird');
+var User = require('mongoose').model('User'),
+  Promise = require('bluebird');
 
 module.exports = {
   getAll: function() {
