@@ -5,10 +5,10 @@ Date::endOfWeek = ->
     @.getFullYear(), 
     @.getMonth(), 
     @.getDate() + 7 - @.getDay() 
-  );
+  )
 
 Date::endOfMonth = ->
-  lastDay = new Date(@.getFullYear(), @.getMonth() + 1, 0);
+  lastDay = new Date(@.getFullYear(), @.getMonth() + 1, 0)
 
 
 Date::endOfYear = ->

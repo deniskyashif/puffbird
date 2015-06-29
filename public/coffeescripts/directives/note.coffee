@@ -6,7 +6,7 @@ puffbird.directive 'note', ['NoteResource', 'notificationService',
     link: (scope, element, attrs) ->
       scope.delete = (note) ->
         note.isDeleted = yes
-        note.$delete( id: note._id, =>  
+        note.$delete( id: note._id, ->  
           notificationService.success 'Note deleted.'
         ) 
       scope.toggleAccomplished = (note) ->

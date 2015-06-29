@@ -1,0 +1,8 @@
+{
+  "no_trailing_whitespace": {
+    "level": "ignore"
+  },
+  "indentation": {
+    "value": "2"
+  }
+}

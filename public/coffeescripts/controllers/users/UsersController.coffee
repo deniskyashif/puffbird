@@ -1,4 +1,5 @@
-puffbird.controller 'UsersController', ['$location', 'UserResource', 'identityService', 'notificationService', 
+puffbird.controller 'UsersController',
+	['$location', 'UserResource', 'identityService', 'notificationService', 
   ($location, UserResource, identityService, notificationService) -> 
     @.currentUser = identityService.getCurrentUser()
 

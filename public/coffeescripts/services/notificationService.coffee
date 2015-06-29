@@ -1,9 +1,9 @@
 puffbird.factory 'notificationService', ['toastr', (toastr) -> 
-	toastr.options = 
+  toastr.options = 
     closeButton: true
-		
-	success: (msg) ->
-		toastr.success msg
-	error: (msg) ->
-		toastr.error msg
+    
+  success: (msg) ->
+    toastr.success msg
+  error: (msg) ->
+    toastr.error msg
 ]

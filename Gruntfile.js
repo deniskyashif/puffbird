@@ -6,12 +6,7 @@ module.exports = function(grunt) {
     coffeelint: {
       app: ['public/coffeescripts/**/*.coffee'],
       options: {
-        'no_trailing_whitespace': {
-          'level': 'ignore'
-        },
-        indentation: {
-          value: 2
-        }
+        configFile: 'coffeelint.json'
       }
     },
     express: {

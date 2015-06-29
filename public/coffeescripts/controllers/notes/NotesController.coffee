@@ -27,13 +27,13 @@ puffbird.controller 'NotesController', ['$window', 'NoteResource', 'reportServic
     @.clear = (form) ->
       form.$setPristine()
  
-    @.delete = (note) =>
+    @.delete = (note) ->
       note.isDeleted = true
-      note.$delete( id: note._id, =>  
+      note.$delete( id: note._id, ->  
         notificationService.success 'Note deleted.'
       ) 
 
-    @.generateReport = (notes) =>
+    @.generateReport = (notes) ->
       reportService.create(notes)
         .then (response) ->
           $window.open response.data
