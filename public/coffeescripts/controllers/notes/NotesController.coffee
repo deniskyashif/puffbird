@@ -1,4 +1,5 @@
-puffbird.controller 'NotesController', ['$window', 'NoteResource', 'reportService', 'notificationService',
+puffbird.controller 'NotesController',
+  ['$window', 'NoteResource', 'reportService', 'notificationService',
   ($window, NoteResource, reportService, notificationService) ->
     @.showCreateNoteForm = no
     @.format = 'dd-MMM-yyyy'
@@ -23,7 +24,7 @@ puffbird.controller 'NotesController', ['$window', 'NoteResource', 'reportServic
         notificationService.success 'Note has been created.'
         @.toggleCreateNoteForm()
         @.notes.push note
-
+    
     @.clear = (form) ->
       form.$setPristine()
  

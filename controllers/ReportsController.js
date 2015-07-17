@@ -4,14 +4,14 @@ var reports = require('../data/reports'),
 module.exports = {
   get: function(req, res) {
     var options = {
-      root: path.resolve(__dirname + '/../tmp/'),
-      dotfiles: 'deny',
-      headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true
-      }
-    },
-    fileName = req.params.name; 
+        root: path.resolve(__dirname + '/../tmp/'),
+        dotfiles: 'deny',
+        headers: {
+          'x-timestamp': Date.now(),
+          'x-sent': true
+        }
+      },
+      fileName = req.params.name;
 
     res.sendFile(fileName, options, function(err) {
       if (err) {

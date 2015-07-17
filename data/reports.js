@@ -11,10 +11,12 @@ module.exports = {
 
     var groupedNotes = _.groupBy(data.notes, 'dueDate');
     _.sortBy(Object.keys(groupedNotes), 'dueDate').forEach(function(key) {
-      text += (key + '\n');
+      var date = new Date(key);
+      text += (date.toLocaleDateString()) + '\n';
+
       groupedNotes[key].forEach(function(note) {
         text += (note.title + '\n');
-        text += (note.details + '\n');
+        text += ((note.details || '') + '\n');
       });
     });
 
