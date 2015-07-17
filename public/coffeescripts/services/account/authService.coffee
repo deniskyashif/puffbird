@@ -1,5 +1,5 @@
 puffbird.factory 'authService',
-	['$http', '$q', 'identityService', 'UserResource', 
+  ['$http', '$q', 'identityService', 'UserResource', 
   ($http, $q, identityService, UserResource) ->
     signup: (user) -> 
       $q (resolve, reject) -> 
@@ -27,4 +27,4 @@ puffbird.factory 'authService',
     isAuthenticated: ->
       identityService.isAuthenticated()
   ]
-	
+  

@@ -1,6 +1,6 @@
 puffbird.factory('httpErrorHandlerInterceptor',
-	['$q', '$location', 'identityService', 'notificationService',
-	($q, $location, identityService, notificationService) -> 
+  ['$q', '$location', 'identityService', 'notificationService',
+  ($q, $location, identityService, notificationService) -> 
     processError = (err) ->
       if (err.status / 100 | 0) == 4 
         notificationService.error 'Not authenticated'

@@ -1,5 +1,5 @@
 puffbird.controller 'AccountController',
-	['$location', 'notificationService', 'authService', 'identityService',
+  ['$location', 'notificationService', 'authService', 'identityService',
   ($location, notificationService, authService, identityService) -> 
     
     @.identityService = identityService

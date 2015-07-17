@@ -1,6 +1,6 @@
 app = angular
   .module 'puffbird', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap'] 
-  .constant 'title', 'Puffbird' 
+  .constant 'title', 'Puffbird'
   .constant 'toastr', toastr
 
 app.config ($routeProvider, $httpProvider) ->
@@ -34,6 +34,6 @@ app.config ($routeProvider, $httpProvider) ->
 
 app.run ($rootScope, $location) ->
   $rootScope.$on '$routeChangeError', (ev, current, previous, rejection) -> 
-    $location.path '/login' if rejection is 'not authorized'
+		$location.path '/login' if rejection is 'not authorized'
 
 (exports ? @).puffbird = app

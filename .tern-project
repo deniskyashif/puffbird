@@ -1,5 +1,12 @@
 {
+    "libs": [
+        "browser",
+        "jquery"
+    ],
    "plugins": {
-    "node": {}
+       "node": {},
+       "node-express": {},
+       "node-mongoose": {},
+       "angular": {}
   }
 }
