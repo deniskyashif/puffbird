@@ -1,6 +1,7 @@
 #puffbird
+<img src="public/images/logo.gif" alt="Logo" align="right" width="250" />
 ###### Track your daily tasks and routines.
-<img src="public/images/logo.gif" alt="Logo" align="center" />
+
 
 ## Single-Page-Application powered by:
 * [mongoose](http://mongoosejs.com/)
