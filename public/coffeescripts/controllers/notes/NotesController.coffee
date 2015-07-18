@@ -1,7 +1,7 @@
 puffbird.controller 'NotesController',
-  ['$window', 'NoteResource', 'reportService', 'notificationService',
-  ($window, NoteResource, reportService, notificationService) ->
-    @.showCreateNoteForm = no
+  ['$window', 'notesService', 'NoteResource', 'reportService', 'notificationService', 'ngDialog',
+  ($window, notesService, NoteResource, reportService, notificationService, ngDialog) ->
+    @.notes = notesService.notes
     @.format = 'dd-MMM-yyyy'
     @.minDate = '1900-01-01'
     @.maxDate = '2100-01-01'
@@ -12,27 +12,13 @@ puffbird.controller 'NotesController',
       startingDay: 1
       
     @.loadNotes = =>
-      @.notes = NoteResource.query().$promise
-        .then (notes) =>
-          @.notes = notes;
+      notesService.loadNotes()
 
-    @.create = (note, form) =>
-      if form.$invalid
-        return notificationService.error 'Please fill the required fields.'
-      newNote = new NoteResource note
-      newNote.$save (note) =>
-        notificationService.success 'Note has been created.'
-        @.toggleCreateNoteForm()
-        @.notes.push note
-    
-    @.clear = (form) ->
-      form.$setPristine()
+    @.create = (note) =>
+      notesService.createNote(note)
  
     @.delete = (note) ->
-      note.isDeleted = true
-      note.$delete( id: note._id, ->  
-        notificationService.success 'Note deleted.'
-      ) 
+      notesService.deleteNote(note)
 
     @.generateReport = (notes) ->
       reportService.create(notes)
@@ -41,10 +27,7 @@ puffbird.controller 'NotesController',
           
     @.toggleAccomplished = (note) ->
       note.accomplished = !note.accomplished
-      NoteResource.update id: note._id, note
-
-    @.toggleCreateNoteForm = =>
-      @.showCreateNoteForm = !@.showCreateNoteForm
+      notesService.updateNote note
 
     @.openCalendar = ($event, calendarType) =>
       $event.preventDefault()
@@ -55,4 +38,10 @@ puffbird.controller 'NotesController',
         @.toCalendarOpened = yes
       else if calendarType is 'due'
         @.dueCalendarOpened = yes
+
+    @.openDialog = =>
+      ngDialog.open({
+        template: '../../../views/directives/createNote.html',
+        className: 'ngdialog-theme-default'
+      })
   ]

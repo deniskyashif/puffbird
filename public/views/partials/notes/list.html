@@ -5,14 +5,14 @@
     </div>
     <div class="col-md-3">
       <div class="pull-right">
-        <input type="button" class="btn btn-sm btn-primary" ng-click="ctrl.toggleCreateNoteForm()" value="{{ctrl.showCreateNoteForm ? 'Cancel' : 'Create'}}">
+        <input type="button" class="btn btn-sm btn-primary" value="Create"
+               ng-dialog="views/directives/createNote.html"
+               ng-dialog-class="ngdialog-theme-plain"
+               ng-dialog-controller="NotesController"
+               ng-dialog-close-previous
+               />
         <input type="button" class="btn btn-sm btn-primary" ng-click="ctrl.generateReport(filteredNotes)" value="Generate Report">
       </div>
-    </div>
-  </div>
-  <div class="row" ng-show="ctrl.showCreateNoteForm">
-    <div class="col-md-12">
-      <div create-note></div>
     </div>
   </div>
   <div class="row">
