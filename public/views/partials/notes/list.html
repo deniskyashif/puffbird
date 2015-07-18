@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-md-2">
       <div class="form-group">
-        <label for="tags" class="control-label">Tags:</label>
+        <label for="tags" class="control-label">Search:</label>
         <input type="text" ng-model="tags" ng-list="," ng-trim="true" class="form-control" />
       </div>
       <div class="form-group">
@@ -60,7 +60,7 @@
         <li class="list-group-item puffbird-note" ng-class="{'note-pending': !note.accomplished, 'note-accomplished': note.accomplished}"
           ng-repeat="note in filteredNotes = (ctrl.notes
                     | dateRangeFilter:fromDate:toDate:timeless
-                    | tagsFilter:tags
+                    | searchTermFilter:tags
                     | filter: {priority: priority, accomplished: status, isDeleted: false}
                     | orderBy: orderBy:orderType)">
           <div class="row">
@@ -68,6 +68,7 @@
           </div>
         </li>
       </ul>
+      <div ng-if="!filteredNotes.length"><h2>No notes to show</h2></div>
     </div>
     <div class="col-md-2">
       <div class="form-group">

@@ -34,7 +34,8 @@ Details: <pre>{{note.details || 'None'}}</pre>
       <button ng-click="toggleAccomplished(note)" class="btn btn-sm btn-default">
         {{note.accomplished ? '&nbsp;Pend&nbsp;&nbsp;':'Complete'}}
       </button><br><br>
-      <button ng-click="delete(note)" class="btn btn-sm btn-danger" ng-show="expanded">Delete</button>
+      <button ng-click="edit(note)" class="btn btn-sm btn-warning" ng-show="expanded"><img src="images/edit.png"></button>
+      <button ng-click="delete(note)" class="btn btn-sm btn-danger" ng-show="expanded"><img src="images/delete.png"></button>
     </div>
   </div>
 </div>

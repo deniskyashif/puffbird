@@ -1,5 +1,6 @@
 body{
-	padding: 75px;	
+    padding: 75px;
+    font-family: "Raleway"
 }
 
 .jumbotron{
@@ -7,8 +8,8 @@ body{
 }
 
 .footer {
-	text-align: center;
-	padding: 20px; 
+    text-align: center;
+    padding: 20px; 
 }
 
 .puffbird-note{
@@ -30,4 +31,8 @@ body{
 
 .puffbird-note:hover{
     background-color: #F5F5F5;
+}
+
+.btn-sm > img {
+    width: 20px;
 }

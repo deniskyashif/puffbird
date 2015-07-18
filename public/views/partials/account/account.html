@@ -1,26 +1,25 @@
 <div ng-controller="AccountController as ctrl" class="nav navbar-nav navbar-right">
-    <form ng-hide="ctrl.identityService.isAuthenticated()" class="navbar-form" name="loginForm">
-        <div class="form-group">
-            <input type="text" required placeholder="Username" ng-model="user.username" class="form-control"/>
-            <input type="password" required placeholder="Password" ng-model="user.password" class="form-control"/>
-        </div>
-        <button ng-click="ctrl.login(user, loginForm)" class="btn btn-primary">Login</button>
-        <a href="#/signup" class="btn btn-default">Sign Up</a>
-    </form>
-    <ul ng-show="ctrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a href="" data-toggle="dropdown" class="dropdown-toggle">&nbsp;&nbsp;&nbsp;
-                {{ctrl.identityService.getCurrentUser().firstName}}
-                {{ctrl.identityService.getCurrentUser().lastName}}
-                &nbsp;&nbsp;<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#/settings">Settings</a></li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#" ng-click="ctrl.logout()">Sign Out</a>
-                </li>
-            </ul>
+  <form ng-hide="ctrl.identityService.isAuthenticated()" class="navbar-form" name="loginForm">
+    <div class="form-group">
+      <input type="text" required placeholder="Username" ng-model="user.username" class="form-control"/>
+      <input type="password" required placeholder="Password" ng-model="user.password" class="form-control"/>
+    </div>
+    <button ng-click="ctrl.login(user, loginForm)" class="btn btn-primary">Login</button>
+    <a href="#/signup" class="btn btn-default">Sign Up</a>
+  </form>
+  <ul ng-show="ctrl.identityService.isAuthenticated()" class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+      <a href="" data-toggle="dropdown" class="dropdown-toggle">&nbsp;&nbsp;&nbsp;
+        {{ctrl.getCurrentUserAlias()}}
+        &nbsp;&nbsp;<span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#/settings">Settings</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="#" ng-click="ctrl.logout()">Sign Out</a>
         </li>
-    </ul>
+      </ul>
+    </li>
+  </ul>
 </div>

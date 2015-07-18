@@ -27,4 +27,13 @@ puffbird.controller 'AccountController',
         .then ->
           notificationService.success 'Logout successful.'
           $location.path '/home'
+
+    @.getCurrentUserAlias = ->
+      currentUser = identityService.getCurrentUser()
+      if currentUser
+        if currentUser.firstName or currentUser.lastName
+          alias = currentUser.firstName + ' ' + currentUser.lastName
+        else
+          alias = currentUser.username
+      alias
   ]
