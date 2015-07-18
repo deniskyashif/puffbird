@@ -11,16 +11,15 @@ module.exports = {
       file = path.resolve(dir + data.user._id + '.txt'),
       text = 'Report ' + (data.user.firstName || '') + ' ' + (data.user.lastName || '') + '\n' + decorationLine + '\n';
 
-
-
     var groupedNotes = _.groupBy(data.notes, 'dueDate');
     _.sortBy(Object.keys(groupedNotes), 'dueDate').forEach(function(key) {
       var date = new Date(key);
-      text += (date.toLocaleDateString()) + '\n';
 
-      text += groupedNotes[key]
+      text += (':: ' + date.getTime() ? date.toLocaleDateString() : 'No due date' + ' ::');
+
+      text += '\n' + groupedNotes[key]
         .map(function(note) {
-          return (note.title + '\n') + ((note.details || '') + '\n');
+          return (note.title + '\n') + ((note.details ? 'details: ' + note.details + '\n' : ''));
         })
         .join('\n');
     });
