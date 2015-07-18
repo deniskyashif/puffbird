@@ -3,25 +3,25 @@
 ###### Track your daily tasks and routines.
 
 
-## Single-Page-Application powered by:
+### Single-Page-Application powered by:
 * [mongoose](http://mongoosejs.com/)
 * [express](http://expressjs.com/)
 * [angular](https://angularjs.org/)
 * [twitter bootstrap](http://getbootstrap.com/)
 
-## Dependencies
+### Dependencies
 * node 0.12.x  
 * npm 2.0.x  
 * MongoDB 2.6.10  
 
-## Installation
+### Installation
 ```
 git clone https://github.com/deniskyashif/puffbird.git  
 cd puffbird/  
 npm install
 ```
 
-## Run
+### Run
 ```
 node bin/www  
 ```
