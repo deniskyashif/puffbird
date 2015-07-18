@@ -4,7 +4,7 @@ var reports = require('../data/reports'),
 module.exports = {
   get: function(req, res) {
     var options = {
-        root: path.resolve(__dirname + '/../tmp/'),
+        root: path.resolve(__dirname + '/../temp/'),
         dotfiles: 'deny',
         headers: {
           'x-timestamp': Date.now(),

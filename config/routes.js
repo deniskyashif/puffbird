@@ -1,4 +1,5 @@
 var auth = require('./auth'),
+  path = require('path'),
   controllers = require('../controllers');
 
 module.exports = function(router) {
@@ -36,6 +37,6 @@ module.exports = function(router) {
 
   //--application--
   router.get('*', function(req, res) {
-    res.sendFile(__dirname + '../public/index.html');
+    res.sendFile(path.normalize(__dirname + '/../public/index.html'));
   });
 };

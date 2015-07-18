@@ -21,12 +21,9 @@
       </div>
       <div class="row">
         <div ng-show="expanded">
-          <small>Created On:</small>
-          <time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time><br>
-          <small>Modified On:</small>
-          <time>{{(note.modifiedOn | date:"EEEE MMM d, y")}}</time><br>
-Details: <pre>{{note.details || 'None'}}</pre>
-
+          <small>Created On:<time>{{(note.createdOn | date:"EEEE MMM d, y")}}</time></small><br>
+          <small>Modified On:<time>{{(note.modifiedOn | date:"EEEE MMM d, y")}}</time></small><br>
+          Details: <pre>{{note.details || 'None'}}</pre>
         </div>
       </div>
     </div>

@@ -7,9 +7,9 @@ var decorationLine = '---------------------------------------';
 
 module.exports = {
   generateTxt: function(data) {
-    var dir = __dirname + '/../tmp/',
+    var dir = __dirname + '/../temp/',
       file = path.resolve(dir + data.user._id + '.txt'),
-      text = 'Report ' + data.user.firstName + ' ' + data.user.lastName + '\n' + decorationLine + '\n';
+      text = 'Report ' + (data.user.firstName || '') + ' ' + (data.user.lastName || '') + '\n' + decorationLine + '\n';
 
 
 
@@ -20,8 +20,7 @@ module.exports = {
 
       text += groupedNotes[key]
         .map(function(note) {
-          text += (note.title + '\n');
-          text += ((note.details || '') + '\n');
+          return (note.title + '\n') + ((note.details || '') + '\n');
         })
         .join('\n');
     });
