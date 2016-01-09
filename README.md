@@ -7,7 +7,7 @@
 * npm 2.0.x  
 * MongoDB 2.6.10  
 
-### Installation
+### Local Installation
 ```
 git clone https://github.com/deniskyashif/puffbird.git  
 cd puffbird/  
