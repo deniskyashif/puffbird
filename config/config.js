@@ -7,7 +7,7 @@ var DEV_PORT = 3030,
 var config = {
   rootPath: rootPath,
   port: process.env.PORT || DEV_PORT,
-  db: 'mongodb://admin:puffbird@ds031681.mongolab.com:31681/puffbird'
+  db: 'mongodb://denis:admin@ds031681.mlab.com:31681/puffbird'
 };
 
 module.exports = function(env) {
