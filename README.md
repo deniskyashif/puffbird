@@ -3,9 +3,9 @@
 ###### Track your daily tasks and routines.
 
 ### Dependencies
-* node 0.12.x  
-* npm 2.0.x  
-* MongoDB 2.6.10  
+* node 6.0.0
+* npm 3.8.6  
+* MongoDB 3.x.x  
 
 ### Local Installation
 ```
