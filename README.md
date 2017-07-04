@@ -1,4 +1,4 @@
-#puffbird
+# puffbird
 <img src="public/images/logo.gif" alt="Logo" align="right" width="250" />
 ###### Track your daily tasks and routines.
 
